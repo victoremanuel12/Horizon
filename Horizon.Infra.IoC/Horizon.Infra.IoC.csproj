@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Horizon.Aplication\Horizon.Aplication.csproj" />
+    <ProjectReference Include="..\Horizon.Domain\Horizon.Domain.csproj" />
+    <ProjectReference Include="..\Horizon.Infra.Data\Horizon.Infra.Data.csproj" />
+  </ItemGroup>
+
+</Project>

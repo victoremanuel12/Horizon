@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "c+1bfHPwEFngKcEhyTYFpjH8BFD9XtsNx5Pr6oHBHCs=",
+  "Source": "Horizon.Api",
+  "BasePath": "_content/Horizon.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

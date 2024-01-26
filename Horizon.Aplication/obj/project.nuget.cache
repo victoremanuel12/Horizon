@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "JQ8FRQGxDhpM3/jw+JYyEJFrfS9kC5EAWt5McdqiGDntROUARXOV5thYNpBxgHX5fgzQPmhWsJK9/5vMlI044A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Aplication\\Horizon.Aplication.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\victor.silva\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\victor.silva\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}

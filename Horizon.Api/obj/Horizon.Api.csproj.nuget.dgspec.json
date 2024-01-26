@@ -1,0 +1,371 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Api\\Horizon.Api.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Api\\Horizon.Api.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Api\\Horizon.Api.csproj",
+        "projectName": "Horizon.Api",
+        "projectPath": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Api\\Horizon.Api.csproj",
+        "packagesPath": "C:\\Users\\victor.silva\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Api\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\victor.silva\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Infra.IoC\\Horizon.Infra.IoC.csproj": {
+                "projectPath": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Infra.IoC\\Horizon.Infra.IoC.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Aplication\\Horizon.Aplication.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Aplication\\Horizon.Aplication.csproj",
+        "projectName": "Horizon.Aplication",
+        "projectPath": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Aplication\\Horizon.Aplication.csproj",
+        "packagesPath": "C:\\Users\\victor.silva\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Aplication\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\victor.silva\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Domain\\Horizon.Domain.csproj": {
+                "projectPath": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Domain\\Horizon.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Domain\\Horizon.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Domain\\Horizon.Domain.csproj",
+        "projectName": "Horizon.Domain",
+        "projectPath": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Domain\\Horizon.Domain.csproj",
+        "packagesPath": "C:\\Users\\victor.silva\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\victor.silva\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Infra.Data\\Horizon.Infra.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Infra.Data\\Horizon.Infra.Data.csproj",
+        "projectName": "Horizon.Infra.Data",
+        "projectPath": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Infra.Data\\Horizon.Infra.Data.csproj",
+        "packagesPath": "C:\\Users\\victor.silva\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Infra.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\victor.silva\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Domain\\Horizon.Domain.csproj": {
+                "projectPath": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Domain\\Horizon.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Infra.IoC\\Horizon.Infra.IoC.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Infra.IoC\\Horizon.Infra.IoC.csproj",
+        "projectName": "Horizon.Infra.IoC",
+        "projectPath": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Infra.IoC\\Horizon.Infra.IoC.csproj",
+        "packagesPath": "C:\\Users\\victor.silva\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Infra.IoC\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\victor.silva\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Aplication\\Horizon.Aplication.csproj": {
+                "projectPath": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Aplication\\Horizon.Aplication.csproj"
+              },
+              "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Domain\\Horizon.Domain.csproj": {
+                "projectPath": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Domain\\Horizon.Domain.csproj"
+              },
+              "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Infra.Data\\Horizon.Infra.Data.csproj": {
+                "projectPath": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Infra.Data\\Horizon.Infra.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
