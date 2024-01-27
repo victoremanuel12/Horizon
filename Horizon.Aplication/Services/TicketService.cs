@@ -36,6 +36,7 @@ namespace Horizon.Aplication.Services
                             ticketEntity.BaggageId = Guid.NewGuid();
 
                         classSelected.Seats -= 1;
+                        ticketEntity.Price = classSelected.Price;
                         _unitOfWork.ClassRepository.Update(classSelected);
 
                         await _unitOfWork.TicketRepository.CreateAsync(ticketEntity);
