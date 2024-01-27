@@ -14,14 +14,23 @@ namespace Horizon.Api.Controllers
         {
             _ticketService = ticketService;
         }
-        [HttpPost]
-        public async Task<IActionResult> BuyTicket([FromBody] TicketDto ticketDto)
+        [HttpGet]
+        public async Task<ActionResult> Get([FromQuery] string cpf)
         {
-            if (ticketDto is null) return BadRequest("Dados para a compra inválidos");
-            TicketDto ticketDtoResult = await  _ticketService.BuyTicket(ticketDto);
-            if (ticketDtoResult is not null)
-                return new CreatedAtRouteResult(new { id = ticketDtoResult.Id }, ticketDtoResult);
-            return BadRequest("Houve um erro ao cadastrar voo");
+            if (cpf is null) return BadRequest("CPF inválido");
+            IEnumerable<TicketDto> ticketsDtoResult = await _ticketService.GetTicketByCpf(cpf);
+            if (ticketsDtoResult.Any())
+                return Ok(ticketsDtoResult);
+            return NotFound("Nenhuma passagem foi encontrada para esse CPF");
+        }
+        [HttpPost]
+        public async Task<IActionResult> BuyTicket([FromBody] List<TicketDto> ticketsDto)
+        {
+            if (ticketsDto is null) return BadRequest("Dados para a compra inválidos");
+            List<TicketDto> ticketsDtoResult = await _ticketService.BuyTicket(ticketsDto);
+            if (ticketsDtoResult is not null)
+                return Ok(ticketsDtoResult);
+            return BadRequest("Não existe acentos para essa classe");
         }
     }
 }

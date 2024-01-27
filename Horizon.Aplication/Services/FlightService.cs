@@ -51,26 +51,14 @@ namespace Horizon.Aplication.Services
             {
                 if (await HasSameCodeInDatabase(flightDto)) throw new Exception("O Código do voo já existe para em outro voo");
                 if (await IsAirportInTheSameCity(flightDto)) throw new Exception("Os Aeroportos não podem estar na mesma cidade");
-                HasFlightWithSameClass(flightDto.Classes);
 
                 Flight flightEntity = _mapper.Map<Flight>(flightDto);
 
-                List<Class> classEntity = _mapper.Map<List<Class>>(flightDto.Classes);
-               
                 await _unitOfWork.FlightRepository.CreateAsync(flightEntity);
-
-                foreach (var item in classEntity)
-                {
-                    item.FlightId = flightEntity.Id;
-                    await _unitOfWork.ClassRepository.CreateAsync(item);
-                }
-                    await _unitOfWork.Commit();
+                await _unitOfWork.Commit();
 
 
-                FlightDto flightDtoResult = _mapper.Map<FlightDto>(flightEntity);
-                List<ClassDto> classDtoResult = _mapper.Map<List<ClassDto>>(flightDto.Classes);
-                flightDtoResult.Classes = classDtoResult;
-                return flightDtoResult;
+                return  _mapper.Map<FlightDto>(flightEntity);
 
             }
             catch (Exception ex)
@@ -83,7 +71,7 @@ namespace Horizon.Aplication.Services
         {
             try
             {
-                var existingFlight = await _unitOfWork.FlightRepository.GetByExpressionAsync(f => f.Code == flightDto.Code);
+                Flight existingFlight = await _unitOfWork.FlightRepository.GetByExpressionAsync(f => f.Code == flightDto.Code);
                 return existingFlight != null;
             }
             catch (Exception ex)
@@ -109,15 +97,7 @@ namespace Horizon.Aplication.Services
 
             }
         }
-        private bool HasFlightWithSameClass(List<ClassDto> classDto)
-        {
-            if (classDto.GroupBy(c => c.ClassTypeId).Any(g => g.Count() > 1))
-            {
-                throw new InvalidOperationException("Não é permitido um voo com duas classes iguais");
-            }
-
-            return false;
-        }
+       
 
         public Task UpdateFlight(Guid flightId, FlightDto flightDto)
         {

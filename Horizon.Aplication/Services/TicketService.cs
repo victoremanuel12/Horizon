@@ -10,7 +10,6 @@ namespace Horizon.Aplication.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        private readonly IClassService _classService;
 
         public TicketService(IUnitOfWork unitOfWork, IMapper mapper)
         {
@@ -18,30 +17,66 @@ namespace Horizon.Aplication.Services
             _mapper = mapper;
         }
 
-        public async Task<TicketDto> BuyTicket(TicketDto ticketDto)
+
+        public async Task<List<TicketDto>> BuyTicket(List<TicketDto> ticketDtoList)
         {
+            var resultTicketList = new List<TicketDto>();
+
             try
             {
-                if(await hasSeatsToTravel(ticketDto))
+                foreach (var ticketDto in ticketDtoList)
                 {
+                    Class classSelected = await _unitOfWork.ClassRepository.GetByIdAsync(ticketDto.ClassId);
 
+                    if (classSelected != null && classSelected.Seats > 0)
+                    {
+                        Ticket ticketEntity = _mapper.Map<Ticket>(ticketDto);
+
+                        if (ticketDto.Dispatch)
+                            ticketEntity.BaggageId = Guid.NewGuid();
+
+                        classSelected.Seats -= 1;
+                        _unitOfWork.ClassRepository.Update(classSelected);
+
+                        await _unitOfWork.TicketRepository.CreateAsync(ticketEntity);
+                        await _unitOfWork.Commit();
+
+                        resultTicketList.Add(_mapper.Map<TicketDto>(ticketEntity));
+                    }
+                    else
+                    {
+                        resultTicketList.Add(new TicketDto());
+                    }
                 }
-               
-                if (ticketDto.Dispatch) ticketDto.BaggageId = new Guid();
-                Ticket ticketEntity = _mapper.Map<Ticket>(ticketDto);
-                await _unitOfWork.TicketRepository.CreateAsync(ticketEntity);
-                await _unitOfWork.Commit();
-                return _mapper.Map<TicketDto>(ticketEntity);
+
+                return resultTicketList;
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.ToString());
             }
         }
-        private async Task<bool> hasSeatsToTravel(TicketDto ticketDto)
+
+
+        public async Task<IEnumerable<TicketDto>> GetTicketByCpf(string cpf)
         {
-            Class classSelected = await _unitOfWork.ClassRepository.GetByIdAsync(ticketDto.ClassId);
-            return classSelected.Seats > 0;
+            try
+            {
+                IEnumerable<Ticket> ticketsEntity = await _unitOfWork.TicketRepository.GetListByExpressionAsync(e => e.Cpf == cpf);
+                if (!ticketsEntity.Any()) return new List<TicketDto>();
+
+                IEnumerable<TicketDto> ticketsDtoResult = _mapper.Map<IEnumerable<TicketDto>>(ticketsEntity);
+                return ticketsDtoResult;
+
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+
         }
+
+
     }
 }

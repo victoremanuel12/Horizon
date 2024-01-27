@@ -1,6 +1,7 @@
 ﻿using Horizon.Domain.Interfaces.Repositories;
 using Horizon.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace Horizon.Infra.Data.Repositories
 {
@@ -20,6 +21,11 @@ namespace Horizon.Infra.Data.Repositories
             var result = await _context.Set<T>().ToListAsync();
             return result.AsQueryable();
         }
+        public async Task<IEnumerable<T>> GetListByExpressionAsync(Expression<Func<T, bool>> predicate)
+        {
+            return await _context.Set<T>().AsNoTracking().Where(predicate).ToListAsync();
+        }
+
         public async Task<T> GetByIdAsync(Guid id)
         {
             return await _context.Set<T>().FindAsync(id);

@@ -23,6 +23,15 @@ namespace Horizon.Api.Controllers
             if (classDtoResult is null) return BadRequest("Erro ao modificar dados da classe do voo");
             return Ok(classDtoResult);
         }
+        [HttpPost]
+        public async Task<IActionResult> CreateClassToVoo(List<ClassDto> classDto)
+        {
+            if (classDto is null) return BadRequest("Preencha os dados da classe corretamente");
+            List<ClassDto> classDtoResult = await _classService.CreateClassToFlight(classDto);
+            if (classDtoResult is null)
+                return BadRequest("Houve um erro ao criar a(s) classe(s)");
+            return Ok(classDtoResult);
+        }
         
     }
 }

@@ -14,7 +14,6 @@ namespace Horizon.Aplication.Mappings
             CreateMap<Flight, FlightDto>().ReverseMap();
             CreateMap<ClassType, ClassTypeDto>().ReverseMap();
             CreateMap<Flight, FlightDto>().ReverseMap();
-            //.ForMember(dest => dest.Classes, opt => opt.MapFrom(src => src.Class));
             CreateMap<Ticket, TicketDto>().ReverseMap();
             CreateMap<Class, ClassDto>().ReverseMap();
 

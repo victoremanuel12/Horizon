@@ -9,8 +9,8 @@ namespace Horizon.Domain.Interfaces
         IFlightRepository FlightRepository { get; }
         IClassRepository ClassRepository { get; }
         IClassTypeRepository ClassTypeRepository { get; }
-
         ITicketRepository TicketRepository { get; }
+        IBuyRepository BuyRepository { get; }
         Task Commit();
     }
 }

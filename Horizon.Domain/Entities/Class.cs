@@ -17,8 +17,7 @@ namespace Horizon.Domain.Entities
 
         public Class(Guid classTypeId, Guid flightId, int seats, decimal price)
         {
-            ValidateDomain(classTypeId, flightId, seats, price);
-
+            ValidateDomain(classTypeId,flightId, seats, price);
 
         }
         private void ValidateDomain(Guid classTypeId, Guid flightId, int seats, decimal price)

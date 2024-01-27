@@ -29,6 +29,8 @@ namespace Horizon.Infra.IoC
             services.AddScoped<IFlightService, FlightService>();
             services.AddScoped<IClassTypeService, ClassTypeService>();
             services.AddScoped<ITicketService, TicketService>();
+            services.AddScoped<IBuyService, BuyService>();
+
 
 
 
