@@ -1,6 +1,8 @@
-﻿using Horizon.Domain.Interfaces.Repositories;
+﻿using Horizon.Domain.Entities;
+using Horizon.Domain.Interfaces.Repositories;
 using Horizon.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -14,6 +16,18 @@ namespace Horizon.Infra.Data.Repositories
         public Repository(ApplicationDbContext context)
         {
             _context = context;
+        }
+        public virtual List<T> SelectIncludes(Func<T, bool> where, params Expression<Func<T, object>>[] includes)
+        {
+            IQueryable<T> query = _context.Set<T>();
+
+            IEnumerable<T> resultado = includes.Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
+
+
+            if (where != null)
+                resultado = resultado.Where(where);
+
+            return resultado.ToList();
         }
         public async Task<T> GetByExpressionAsync(Expression<Func<T, bool>> predicate)
         {

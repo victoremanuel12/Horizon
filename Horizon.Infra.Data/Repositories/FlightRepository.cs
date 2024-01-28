@@ -1,6 +1,7 @@
 ﻿using Horizon.Domain.Domain;
 using Horizon.Domain.Interfaces.Repositories;
 using Horizon.Infra.Data.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace Horizon.Infra.Data.Repositories
 {
@@ -9,5 +10,6 @@ namespace Horizon.Infra.Data.Repositories
         public FlightRepository(ApplicationDbContext context) : base(context)
         {
         }
+      
     }
 }

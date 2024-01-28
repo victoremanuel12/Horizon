@@ -32,6 +32,8 @@ namespace Horizon.Infra.IoC
             services.AddScoped<ITicketService, TicketService>();
             services.AddScoped<IVisitorService, VisitorService>();
             services.AddScoped<IBuyerService, BuyerService>();
+            services.AddScoped<IVoucherService, VoucherService>();
+
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
