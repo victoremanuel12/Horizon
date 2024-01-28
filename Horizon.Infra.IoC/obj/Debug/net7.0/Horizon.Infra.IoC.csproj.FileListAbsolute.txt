@@ -17,6 +17,11 @@ C:\Users\victor.silva\Documents\Estudos\projetos\Horizon\Horizon\Horizon.Infra.I
 C:\Users\victor.silva\Documents\Estudos\projetos\Horizon\Horizon\Horizon.Infra.IoC\obj\Debug\net7.0\refint\Horizon.Infra.IoC.dll
 C:\Users\victor.silva\Documents\Estudos\projetos\Horizon\Horizon\Horizon.Infra.IoC\obj\Debug\net7.0\Horizon.Infra.IoC.pdb
 C:\Users\victor.silva\Documents\Estudos\projetos\Horizon\Horizon\Horizon.Infra.IoC\obj\Debug\net7.0\ref\Horizon.Infra.IoC.dll
+C:\Users\victor.silva\Documents\Arquivos Importantes\Horizon.Infra.IoC\obj\Debug\net7.0\Horizon.Infra.IoC.csproj.AssemblyReference.cache
+C:\Users\victor.silva\Documents\Arquivos Importantes\Horizon.Infra.IoC\obj\Debug\net7.0\Horizon.Infra.IoC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\victor.silva\Documents\Arquivos Importantes\Horizon.Infra.IoC\obj\Debug\net7.0\Horizon.Infra.IoC.AssemblyInfoInputs.cache
+C:\Users\victor.silva\Documents\Arquivos Importantes\Horizon.Infra.IoC\obj\Debug\net7.0\Horizon.Infra.IoC.AssemblyInfo.cs
+C:\Users\victor.silva\Documents\Arquivos Importantes\Horizon.Infra.IoC\obj\Debug\net7.0\Horizon.Infra.IoC.csproj.CoreCompileInputs.cache
 C:\Users\victor.silva\Documents\Arquivos Importantes\Horizon.Infra.IoC\bin\Debug\net7.0\Horizon.Infra.IoC.deps.json
 C:\Users\victor.silva\Documents\Arquivos Importantes\Horizon.Infra.IoC\bin\Debug\net7.0\Horizon.Infra.IoC.dll
 C:\Users\victor.silva\Documents\Arquivos Importantes\Horizon.Infra.IoC\bin\Debug\net7.0\Horizon.Infra.IoC.pdb
@@ -26,13 +31,27 @@ C:\Users\victor.silva\Documents\Arquivos Importantes\Horizon.Infra.IoC\bin\Debug
 C:\Users\victor.silva\Documents\Arquivos Importantes\Horizon.Infra.IoC\bin\Debug\net7.0\Horizon.Aplication.pdb
 C:\Users\victor.silva\Documents\Arquivos Importantes\Horizon.Infra.IoC\bin\Debug\net7.0\Horizon.Domain.pdb
 C:\Users\victor.silva\Documents\Arquivos Importantes\Horizon.Infra.IoC\bin\Debug\net7.0\Horizon.Infra.Data.pdb
-C:\Users\victor.silva\Documents\Arquivos Importantes\Horizon.Infra.IoC\obj\Debug\net7.0\Horizon.Infra.IoC.csproj.AssemblyReference.cache
-C:\Users\victor.silva\Documents\Arquivos Importantes\Horizon.Infra.IoC\obj\Debug\net7.0\Horizon.Infra.IoC.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\victor.silva\Documents\Arquivos Importantes\Horizon.Infra.IoC\obj\Debug\net7.0\Horizon.Infra.IoC.AssemblyInfoInputs.cache
-C:\Users\victor.silva\Documents\Arquivos Importantes\Horizon.Infra.IoC\obj\Debug\net7.0\Horizon.Infra.IoC.AssemblyInfo.cs
-C:\Users\victor.silva\Documents\Arquivos Importantes\Horizon.Infra.IoC\obj\Debug\net7.0\Horizon.Infra.IoC.csproj.CoreCompileInputs.cache
 C:\Users\victor.silva\Documents\Arquivos Importantes\Horizon.Infra.IoC\obj\Debug\net7.0\Horizon.Infra.IoC.csproj.CopyComplete
 C:\Users\victor.silva\Documents\Arquivos Importantes\Horizon.Infra.IoC\obj\Debug\net7.0\Horizon.Infra.IoC.dll
 C:\Users\victor.silva\Documents\Arquivos Importantes\Horizon.Infra.IoC\obj\Debug\net7.0\refint\Horizon.Infra.IoC.dll
 C:\Users\victor.silva\Documents\Arquivos Importantes\Horizon.Infra.IoC\obj\Debug\net7.0\Horizon.Infra.IoC.pdb
 C:\Users\victor.silva\Documents\Arquivos Importantes\Horizon.Infra.IoC\obj\Debug\net7.0\ref\Horizon.Infra.IoC.dll
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.IoC\bin\Debug\net7.0\Horizon.Infra.IoC.deps.json
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.IoC\bin\Debug\net7.0\Horizon.Infra.IoC.dll
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.IoC\bin\Debug\net7.0\Horizon.Infra.IoC.pdb
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.IoC\bin\Debug\net7.0\Horizon.Aplication.dll
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.IoC\bin\Debug\net7.0\Horizon.Domain.dll
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.IoC\bin\Debug\net7.0\Horizon.Infra.Data.dll
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.IoC\bin\Debug\net7.0\Horizon.Aplication.pdb
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.IoC\bin\Debug\net7.0\Horizon.Domain.pdb
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.IoC\bin\Debug\net7.0\Horizon.Infra.Data.pdb
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.IoC\obj\Debug\net7.0\Horizon.Infra.IoC.csproj.AssemblyReference.cache
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.IoC\obj\Debug\net7.0\Horizon.Infra.IoC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.IoC\obj\Debug\net7.0\Horizon.Infra.IoC.AssemblyInfoInputs.cache
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.IoC\obj\Debug\net7.0\Horizon.Infra.IoC.AssemblyInfo.cs
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.IoC\obj\Debug\net7.0\Horizon.Infra.IoC.csproj.CoreCompileInputs.cache
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.IoC\obj\Debug\net7.0\Horizon.Infra.IoC.csproj.CopyComplete
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.IoC\obj\Debug\net7.0\Horizon.Infra.IoC.dll
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.IoC\obj\Debug\net7.0\refint\Horizon.Infra.IoC.dll
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.IoC\obj\Debug\net7.0\Horizon.Infra.IoC.pdb
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.IoC\obj\Debug\net7.0\ref\Horizon.Infra.IoC.dll

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Domain\\Horizon.Domain.csproj": {}
+    "C:\\Users\\victor.silva\\Documents\\Horizon\\Horizon.Domain\\Horizon.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Domain\\Horizon.Domain.csproj": {
+    "C:\\Users\\victor.silva\\Documents\\Horizon\\Horizon.Domain\\Horizon.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Domain\\Horizon.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\victor.silva\\Documents\\Horizon\\Horizon.Domain\\Horizon.Domain.csproj",
         "projectName": "Horizon.Domain",
-        "projectPath": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Domain\\Horizon.Domain.csproj",
+        "projectPath": "C:\\Users\\victor.silva\\Documents\\Horizon\\Horizon.Domain\\Horizon.Domain.csproj",
         "packagesPath": "C:\\Users\\victor.silva\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Domain\\obj\\",
+        "outputPath": "C:\\Users\\victor.silva\\Documents\\Horizon\\Horizon.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

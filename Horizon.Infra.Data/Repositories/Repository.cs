@@ -1,7 +1,10 @@
 ﻿using Horizon.Domain.Interfaces.Repositories;
 using Horizon.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace Horizon.Infra.Data.Repositories
 {
@@ -12,7 +15,7 @@ namespace Horizon.Infra.Data.Repositories
         {
             _context = context;
         }
-        public async Task<T> GetByExpressionAsync(System.Linq.Expressions.Expression<Func<T, bool>> predicate)
+        public async Task<T> GetByExpressionAsync(Expression<Func<T, bool>> predicate)
         {
             return await _context.Set<T>().AsNoTracking().SingleOrDefaultAsync(predicate);
         }
@@ -21,16 +24,20 @@ namespace Horizon.Infra.Data.Repositories
             var result = await _context.Set<T>().ToListAsync();
             return result.AsQueryable();
         }
-        public async Task<IEnumerable<T>> GetListByExpressionAsync(Expression<Func<T, bool>> predicate)
+        public async Task<IQueryable<T>> GetListByExpressionAsync(Expression<Func<T, bool>> predicate)
         {
-            return await _context.Set<T>().AsNoTracking().Where(predicate).ToListAsync();
+            return (await _context.Set<T>().AsNoTracking().Where(predicate).ToListAsync()).AsQueryable();
         }
-
         public async Task<T> GetByIdAsync(Guid id)
         {
             return await _context.Set<T>().FindAsync(id);
         }
+        public async Task<T> UpdateWithCondition(Expression<Func<T, bool>> condition)
+        {
+            var entity = await _context.Set<T>().SingleOrDefaultAsync(condition);
 
+            return entity;
+        }
         public async Task<T> CreateAsync(T entity)
         {
             var idProperty = entity.GetType().GetProperty("Id");
@@ -42,7 +49,6 @@ namespace Horizon.Infra.Data.Repositories
             await _context.Set<T>().AddAsync(entity);
             return entity;
         }
-
 
         public T Update(T entity)
         {
@@ -56,6 +62,5 @@ namespace Horizon.Infra.Data.Repositories
             _context.Remove(entity);
             return entity;
         }
-
     }
 }

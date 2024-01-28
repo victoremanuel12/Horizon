@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using CleanArchMvc.Domain.Validation;
 using Horizon.Aplication.Dtos;
 using Horizon.Aplication.ServiceInterfaces;
 using Horizon.Domain.Domain;
@@ -17,13 +16,37 @@ namespace Horizon.Aplication.Services
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public async Task<IEnumerable<FlightDto>> GetAllFlights()
+        public async Task<List<FlightWithNameAirportDto>> GetAllFlights()
         {
             try
             {
                 IEnumerable<Flight> flightsEntity = await _unitOfWork.FlightRepository.GetAllAsync();
-                return _mapper.Map<IEnumerable<FlightDto>>(flightsEntity);
+                List<FlightWithNameAirportDto> flightsWithNameDto = new List<FlightWithNameAirportDto>();
 
+                foreach (var flight in flightsEntity)
+                {
+                    if (!flight.Canceled)
+                    {
+                        Airport originClassType = await _unitOfWork.AirportRepository.GetByIdAsync(flight.OriginId);
+                        Airport destinyClassType = await _unitOfWork.AirportRepository.GetByIdAsync(flight.DestinyId);
+                        FlightWithNameAirportDto flightDto = new FlightWithNameAirportDto
+                        {
+                            Id = flight.Id,
+                            Code = flight.Code,
+                            Time = flight.Time,
+                            OriginId = originClassType.Id,
+                            DestinyId = destinyClassType.Id,
+                            NameOrigin = originClassType.Name,
+                            NameDestiny = destinyClassType.Name,
+                            Canceled = flight.Canceled
+                        };
+
+                        flightsWithNameDto.Add(flightDto);
+                    }
+
+                }
+
+                return flightsWithNameDto;
             }
             catch (Exception ex)
             {
@@ -31,13 +54,28 @@ namespace Horizon.Aplication.Services
             }
         }
 
-        public async Task<FlightDto> GetFlightById(Guid flightId)
+
+        public async Task<FlightWithNameAirportDto> GetFlightById(Guid flightId)
         {
             try
             {
 
                 Flight flightEntity = await _unitOfWork.FlightRepository.GetByIdAsync(flightId);
-                return _mapper.Map<FlightDto>(flightEntity);
+                Airport originClassType = await _unitOfWork.AirportRepository.GetByIdAsync(flightEntity.OriginId);
+                Airport destinyClassType = await _unitOfWork.AirportRepository.GetByIdAsync(flightEntity.DestinyId);
+
+                FlightWithNameAirportDto flightDtoResult = new FlightWithNameAirportDto
+                {
+                    Id = flightEntity.Id,
+                    Code = flightEntity.Code,
+                    Time = flightEntity.Time,
+                    OriginId = originClassType.Id,
+                    DestinyId = destinyClassType.Id,
+                    NameOrigin = originClassType.Name,
+                    NameDestiny = destinyClassType.Name,
+                    Canceled = flightEntity.Canceled
+                };
+                return flightDtoResult;
             }
             catch (Exception ex)
             {
@@ -58,7 +96,7 @@ namespace Horizon.Aplication.Services
                 await _unitOfWork.Commit();
 
 
-                return  _mapper.Map<FlightDto>(flightEntity);
+                return _mapper.Map<FlightDto>(flightEntity);
 
             }
             catch (Exception ex)
@@ -97,7 +135,7 @@ namespace Horizon.Aplication.Services
 
             }
         }
-       
+
 
         public Task UpdateFlight(Guid flightId, FlightDto flightDto)
         {

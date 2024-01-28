@@ -32,3 +32,20 @@ C:\Users\victor.silva\Documents\Arquivos Importantes\Horizon.Infra.Data\obj\Debu
 C:\Users\victor.silva\Documents\Arquivos Importantes\Horizon.Infra.Data\obj\Debug\net7.0\Horizon.Infra.Data.pdb
 C:\Users\victor.silva\Documents\Arquivos Importantes\Horizon.Infra.Data\obj\Debug\net7.0\Horizon.Infra.Data.genruntimeconfig.cache
 C:\Users\victor.silva\Documents\Arquivos Importantes\Horizon.Infra.Data\obj\Debug\net7.0\ref\Horizon.Infra.Data.dll
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.Data\bin\Debug\net7.0\Horizon.Infra.Data.deps.json
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.Data\bin\Debug\net7.0\Horizon.Infra.Data.runtimeconfig.json
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.Data\bin\Debug\net7.0\Horizon.Infra.Data.dll
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.Data\bin\Debug\net7.0\Horizon.Infra.Data.pdb
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.Data\bin\Debug\net7.0\Horizon.Domain.dll
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.Data\bin\Debug\net7.0\Horizon.Domain.pdb
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.Data\obj\Debug\net7.0\Horizon.Infra.Data.csproj.AssemblyReference.cache
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.Data\obj\Debug\net7.0\Horizon.Infra.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.Data\obj\Debug\net7.0\Horizon.Infra.Data.AssemblyInfoInputs.cache
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.Data\obj\Debug\net7.0\Horizon.Infra.Data.AssemblyInfo.cs
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.Data\obj\Debug\net7.0\Horizon.Infra.Data.csproj.CoreCompileInputs.cache
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.Data\obj\Debug\net7.0\Horizon.Infra.Data.csproj.CopyComplete
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.Data\obj\Debug\net7.0\Horizon.Infra.Data.dll
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.Data\obj\Debug\net7.0\refint\Horizon.Infra.Data.dll
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.Data\obj\Debug\net7.0\Horizon.Infra.Data.pdb
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.Data\obj\Debug\net7.0\Horizon.Infra.Data.genruntimeconfig.cache
+C:\Users\victor.silva\Documents\Horizon\Horizon.Infra.Data\obj\Debug\net7.0\ref\Horizon.Infra.Data.dll

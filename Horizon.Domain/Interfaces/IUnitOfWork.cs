@@ -11,6 +11,8 @@ namespace Horizon.Domain.Interfaces
         IClassTypeRepository ClassTypeRepository { get; }
         ITicketRepository TicketRepository { get; }
         IBuyRepository BuyRepository { get; }
+        IVisitorRepository VisitorRepository { get; }
+        IBuyerRepository BuyerRepository { get; }
         Task Commit();
     }
 }

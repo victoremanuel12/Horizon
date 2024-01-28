@@ -14,20 +14,22 @@ namespace Horizon.Api.Controllers
             _flightService = flightService;
         }
 
-        [HttpGet]
+        [HttpGet("AllFlights")]
         public async Task<IActionResult> List()
         {
-            IEnumerable<FlightDto> resultDto = await _flightService.GetAllFlights();
-            if (resultDto is null) return NotFound("Não existem voos cadastrados");
+            List<FlightWithNameAirportDto> resultDto = await _flightService.GetAllFlights();
+            if (!resultDto.Any())
+                return NotFound("Não existem voos cadastrados");
             return Ok(resultDto);
         }
 
         [HttpGet("{id:Guid}", Name = "GetFlightById")]
         public async Task<IActionResult> GetFlightById(Guid id)
         {
-            FlightDto resultDto = await _flightService.GetFlightById(id);
-            if (resultDto is null) return NotFound("Voo não encontrado");
-            return Ok(resultDto);
+            FlightWithNameAirportDto flightDtoResult = await _flightService.GetFlightById(id);
+            if (flightDtoResult is null) 
+                return NotFound("Voo não encontrado");
+            return Ok(flightDtoResult);
         }
 
         [HttpPost]

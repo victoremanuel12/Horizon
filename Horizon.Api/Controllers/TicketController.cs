@@ -27,7 +27,7 @@ namespace Horizon.Api.Controllers
         public async Task<IActionResult> BuyTicket([FromBody] List<TicketDto> ticketsDto)
         {
             if (ticketsDto is null) return BadRequest("Dados para a compra inválidos");
-            List<TicketDto> ticketsDtoResult = await _ticketService.BuyTicket(ticketsDto);
+            List<TicketDto> ticketsDtoResult = await _ticketService.BuyTickets(ticketsDto);
             if (ticketsDtoResult is not null)
                 return Ok(ticketsDtoResult);
             return BadRequest("Não existe acentos para essa classe");

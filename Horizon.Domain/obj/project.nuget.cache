@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rXueTO0idtUKYLt8dtwReBBLVEx0dZt0me5JQZKZUwyqjNQC7mMyRhd0+VUL/Kt1HpjlXqZwbdeSWdsfLuKZ1Q==",
+  "dgSpecHash": "v0b6blw/eOnUX8tCxt2FFWpoBHQbMVCUziNAWEab08nC/ChDqWAQ/qAlBuI1JL5qcgzm7mVn9OPAhCwUlUJBOw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Domain\\Horizon.Domain.csproj",
+  "projectFilePath": "C:\\Users\\victor.silva\\Documents\\Horizon\\Horizon.Domain\\Horizon.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

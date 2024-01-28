@@ -13,6 +13,8 @@ namespace Horizon.Infra.Data.Repositories
         private ClassTypeRepository _classTypeRepository;
         private TicketRepository _ticketRepository;
         private BuyRepository _buyRepository;
+        private VisitorRepository _visitorRepository;
+        private BuyerRepository _buyerRepository;
         public ApplicationDbContext _context;
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -73,6 +75,22 @@ namespace Horizon.Infra.Data.Repositories
             get
             {
                 return _buyRepository = _buyRepository ?? new BuyRepository(_context);
+            }
+        }
+        public IVisitorRepository VisitorRepository
+        {
+
+            get
+            {
+                return _visitorRepository = _visitorRepository ?? new VisitorRepository(_context);
+            }
+        }
+        public IBuyerRepository BuyerRepository
+        {
+
+            get
+            {
+                return _buyerRepository = _buyerRepository ?? new BuyerRepository(_context);
             }
         }
 

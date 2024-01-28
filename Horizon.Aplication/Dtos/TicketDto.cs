@@ -12,5 +12,6 @@
         public bool Dispatch { get; set; }
         public Guid BuyId { get; set; }
         public bool Canceled { get; set; }
+        public Guid BaggageId { get; set; }
     }
 }

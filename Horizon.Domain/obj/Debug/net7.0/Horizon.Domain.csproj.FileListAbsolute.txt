@@ -22,3 +22,15 @@ C:\Users\victor.silva\Documents\Arquivos Importantes\Horizon.Domain\obj\Debug\ne
 C:\Users\victor.silva\Documents\Arquivos Importantes\Horizon.Domain\obj\Debug\net7.0\refint\Horizon.Domain.dll
 C:\Users\victor.silva\Documents\Arquivos Importantes\Horizon.Domain\obj\Debug\net7.0\Horizon.Domain.pdb
 C:\Users\victor.silva\Documents\Arquivos Importantes\Horizon.Domain\obj\Debug\net7.0\ref\Horizon.Domain.dll
+C:\Users\victor.silva\Documents\Horizon\Horizon.Domain\bin\Debug\net7.0\Horizon.Domain.deps.json
+C:\Users\victor.silva\Documents\Horizon\Horizon.Domain\bin\Debug\net7.0\Horizon.Domain.dll
+C:\Users\victor.silva\Documents\Horizon\Horizon.Domain\bin\Debug\net7.0\Horizon.Domain.pdb
+C:\Users\victor.silva\Documents\Horizon\Horizon.Domain\obj\Debug\net7.0\Horizon.Domain.csproj.AssemblyReference.cache
+C:\Users\victor.silva\Documents\Horizon\Horizon.Domain\obj\Debug\net7.0\Horizon.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\victor.silva\Documents\Horizon\Horizon.Domain\obj\Debug\net7.0\Horizon.Domain.AssemblyInfoInputs.cache
+C:\Users\victor.silva\Documents\Horizon\Horizon.Domain\obj\Debug\net7.0\Horizon.Domain.AssemblyInfo.cs
+C:\Users\victor.silva\Documents\Horizon\Horizon.Domain\obj\Debug\net7.0\Horizon.Domain.csproj.CoreCompileInputs.cache
+C:\Users\victor.silva\Documents\Horizon\Horizon.Domain\obj\Debug\net7.0\Horizon.Domain.dll
+C:\Users\victor.silva\Documents\Horizon\Horizon.Domain\obj\Debug\net7.0\refint\Horizon.Domain.dll
+C:\Users\victor.silva\Documents\Horizon\Horizon.Domain\obj\Debug\net7.0\Horizon.Domain.pdb
+C:\Users\victor.silva\Documents\Horizon\Horizon.Domain\obj\Debug\net7.0\ref\Horizon.Domain.dll

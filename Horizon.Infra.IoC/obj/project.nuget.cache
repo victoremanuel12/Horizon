@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NJxCp85xy8JekarJs1sszhYPDJjw/IL7K24O1HHu4Kd6JupK/UwLeJkg07rS6X9JB7Rx0/xQNaPb5hKMq3yOYQ==",
+  "dgSpecHash": "48YmsNFbv1Y5qDeSv3w0+W+LvVHPD8Abx4kJ8VWXvYCTfF4XgfTLrsIN3rX2fylEN1OeyR5MDWaOEh4Fwrb9Ww==",
   "success": true,
-  "projectFilePath": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Infra.IoC\\Horizon.Infra.IoC.csproj",
+  "projectFilePath": "C:\\Users\\victor.silva\\Documents\\Horizon\\Horizon.Infra.IoC\\Horizon.Infra.IoC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\victor.silva\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\victor.silva\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

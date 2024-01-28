@@ -18,7 +18,7 @@ namespace Horizon.Aplication.Services
         }
 
 
-        public async Task<List<TicketDto>> BuyTicket(List<TicketDto> ticketDtoList)
+        public async Task<List<TicketDto>> BuyTickets(List<TicketDto> ticketDtoList)
         {
             var resultTicketList = new List<TicketDto>();
 
@@ -30,13 +30,12 @@ namespace Horizon.Aplication.Services
 
                     if (classSelected != null && classSelected.Seats > 0)
                     {
+                        ticketDto.Price = classSelected.Price;
                         Ticket ticketEntity = _mapper.Map<Ticket>(ticketDto);
+                        if(classSelected.Seats == classSelected.OccupiedSeat) throw new Exception("Não existem mais passagens para essa classe");
 
-                        if (ticketDto.Dispatch)
-                            ticketEntity.BaggageId = Guid.NewGuid();
+                        classSelected.OccupiedSeat += 1 ;
 
-                        classSelected.Seats -= 1;
-                        ticketEntity.Price = classSelected.Price;
                         _unitOfWork.ClassRepository.Update(classSelected);
 
                         await _unitOfWork.TicketRepository.CreateAsync(ticketEntity);
@@ -68,8 +67,6 @@ namespace Horizon.Aplication.Services
 
                 IEnumerable<TicketDto> ticketsDtoResult = _mapper.Map<IEnumerable<TicketDto>>(ticketsEntity);
                 return ticketsDtoResult;
-
-
             }
             catch (Exception ex)
             {

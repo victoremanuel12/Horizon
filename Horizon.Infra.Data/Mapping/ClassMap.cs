@@ -22,6 +22,10 @@ namespace Horizon.Infra.Data.Mapping
                .HasColumnName("Price")
                .HasColumnType("decimal(17,2)")
                .IsRequired();
+            builder.Property(a => a.OccupiedSeat)
+             .HasColumnName("OccupiedSeat")
+             .HasColumnType("int")
+             .IsRequired();
 
             builder.HasOne(a => a.ClassType)
                 .WithMany()

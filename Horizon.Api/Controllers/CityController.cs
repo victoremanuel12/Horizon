@@ -14,7 +14,7 @@ namespace Horizon.Api.Controllers
         {
             _cityService = cityService;
         }
-        [HttpGet]
+        [HttpGet()]
         public async Task<IActionResult> List()
         {
             IEnumerable<CityDto> resultDto = await _cityService.GetAllCities();

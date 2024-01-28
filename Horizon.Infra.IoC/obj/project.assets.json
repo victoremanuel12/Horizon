@@ -3349,11 +3349,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Infra.IoC\\Horizon.Infra.IoC.csproj",
+      "projectUniqueName": "C:\\Users\\victor.silva\\Documents\\Horizon\\Horizon.Infra.IoC\\Horizon.Infra.IoC.csproj",
       "projectName": "Horizon.Infra.IoC",
-      "projectPath": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Infra.IoC\\Horizon.Infra.IoC.csproj",
+      "projectPath": "C:\\Users\\victor.silva\\Documents\\Horizon\\Horizon.Infra.IoC\\Horizon.Infra.IoC.csproj",
       "packagesPath": "C:\\Users\\victor.silva\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Infra.IoC\\obj\\",
+      "outputPath": "C:\\Users\\victor.silva\\Documents\\Horizon\\Horizon.Infra.IoC\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -3373,14 +3373,14 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Aplication\\Horizon.Aplication.csproj": {
-              "projectPath": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Aplication\\Horizon.Aplication.csproj"
+            "C:\\Users\\victor.silva\\Documents\\Horizon\\Horizon.Aplication\\Horizon.Aplication.csproj": {
+              "projectPath": "C:\\Users\\victor.silva\\Documents\\Horizon\\Horizon.Aplication\\Horizon.Aplication.csproj"
             },
-            "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Domain\\Horizon.Domain.csproj": {
-              "projectPath": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Domain\\Horizon.Domain.csproj"
+            "C:\\Users\\victor.silva\\Documents\\Horizon\\Horizon.Domain\\Horizon.Domain.csproj": {
+              "projectPath": "C:\\Users\\victor.silva\\Documents\\Horizon\\Horizon.Domain\\Horizon.Domain.csproj"
             },
-            "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Infra.Data\\Horizon.Infra.Data.csproj": {
-              "projectPath": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Infra.Data\\Horizon.Infra.Data.csproj"
+            "C:\\Users\\victor.silva\\Documents\\Horizon\\Horizon.Infra.Data\\Horizon.Infra.Data.csproj": {
+              "projectPath": "C:\\Users\\victor.silva\\Documents\\Horizon\\Horizon.Infra.Data\\Horizon.Infra.Data.csproj"
             }
           }
         }

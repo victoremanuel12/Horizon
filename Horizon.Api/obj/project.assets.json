@@ -3816,11 +3816,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Api\\Horizon.Api.csproj",
+      "projectUniqueName": "C:\\Users\\victor.silva\\Documents\\Horizon\\Horizon.Api\\Horizon.Api.csproj",
       "projectName": "Horizon.Api",
-      "projectPath": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Api\\Horizon.Api.csproj",
+      "projectPath": "C:\\Users\\victor.silva\\Documents\\Horizon\\Horizon.Api\\Horizon.Api.csproj",
       "packagesPath": "C:\\Users\\victor.silva\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Api\\obj\\",
+      "outputPath": "C:\\Users\\victor.silva\\Documents\\Horizon\\Horizon.Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -3840,8 +3840,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Infra.IoC\\Horizon.Infra.IoC.csproj": {
-              "projectPath": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Infra.IoC\\Horizon.Infra.IoC.csproj"
+            "C:\\Users\\victor.silva\\Documents\\Horizon\\Horizon.Infra.IoC\\Horizon.Infra.IoC.csproj": {
+              "projectPath": "C:\\Users\\victor.silva\\Documents\\Horizon\\Horizon.Infra.IoC\\Horizon.Infra.IoC.csproj"
             }
           }
         }

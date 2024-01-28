@@ -28,15 +28,18 @@ namespace Horizon.Infra.IoC
             services.AddScoped<ICityService, CityService>();
             services.AddScoped<IFlightService, FlightService>();
             services.AddScoped<IClassTypeService, ClassTypeService>();
-            services.AddScoped<ITicketService, TicketService>();
             services.AddScoped<IBuyService, BuyService>();
+            services.AddScoped<ITicketService, TicketService>();
+            services.AddScoped<IVisitorService, VisitorService>();
+            services.AddScoped<IBuyerService, BuyerService>();
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 
 
 
 
             services.AddAutoMapper(typeof(DomainToDtoMappingProfile));
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             return services;
         }

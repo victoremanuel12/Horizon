@@ -4,9 +4,9 @@ namespace Horizon.Aplication.ServiceInterfaces
 {
     public interface IFlightService
     {
-        Task<IEnumerable<FlightDto>> GetAllFlights();
+        Task<List<FlightWithNameAirportDto>> GetAllFlights();
 
-        Task<FlightDto> GetFlightById(Guid flightId);
+        Task<FlightWithNameAirportDto> GetFlightById(Guid flightId);
 
         Task<FlightDto> CreateFlight(FlightDto flightDto);
 

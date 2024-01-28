@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "oELrh5PyJILglY+y/K+PkC6xSqJXY1HKCyPGzi2KSo2ZhiEy70sJnD5bkHIDNCeos9AXxpl/4lucGggwj3cG3A==",
+  "dgSpecHash": "7kQ3w/SjcHY9M1Hkn6MOmsH34SaMARKXSkngP+1XZHo37mpf8ZtXYmbp9CjOQdRAID40jBeocCXoL8xZMif7Nw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\victor.silva\\Documents\\Arquivos Importantes\\Horizon.Api\\Horizon.Api.csproj",
+  "projectFilePath": "C:\\Users\\victor.silva\\Documents\\Horizon\\Horizon.Api\\Horizon.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\victor.silva\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\victor.silva\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

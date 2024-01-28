@@ -20,9 +20,9 @@ namespace Horizon.Aplication.Services
         {
             try
             {
-                Class classEntity = await _unitOfWork.ClassRepository.GetByIdAsync(classId);
+                Class classEntity = _mapper.Map<Class>(classDto);
+                var teste = await _unitOfWork.ClassRepository.UpdateWithCondition(e => e.Id == classEntity.Id);
                 _mapper.Map(classDto, classEntity);
-                _unitOfWork.ClassRepository.Update(classEntity);
                 await _unitOfWork.Commit();
                 return _mapper.Map<ClassDto>(classEntity);
             }

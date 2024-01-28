@@ -1,4 +1,5 @@
-﻿using Horizon.Domain.Entities;
+﻿using Horizon.Domain.Domain;
+using Horizon.Domain.Entities;
 using Horizon.Domain.Interfaces.Repositories;
 using Horizon.Infra.Data.Context;
 

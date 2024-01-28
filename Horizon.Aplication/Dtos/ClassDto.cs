@@ -7,5 +7,7 @@
         public Guid ClassTypeId { get; set; }
         public int Seats { get; set; }
         public decimal Price { get; set; }
+        public int OccupiedSeat { get; set; }
+
     }
 }

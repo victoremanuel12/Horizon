@@ -20,16 +20,17 @@ namespace Horizon.Domain.Domain
 
         public Flight(Guid id,string code, DateTime time, Guid originId, Guid destinyId, bool canceled)
         {
-            ValidateDomain(code, time, originId, destinyId, canceled);
+            ValidateDomain(id, code, time, originId, destinyId, canceled);
       
 
         }
 
-        private void ValidateDomain(string code, DateTime time, Guid originId, Guid destinyId, bool canceled)
+        private void ValidateDomain(Guid id, string code, DateTime time, Guid originId, Guid destinyId, bool canceled)
         {
             DomainExceptionValidation.When(originId == destinyId, "O destino e a origem do voo não podem ser o mesmo");
             DomainExceptionValidation.When(string.IsNullOrEmpty(code), "Código do voo é obrigatório");
             DomainExceptionValidation.When(time == DateTime.MinValue, "Data do voo não pode ser vazia");
+            Id = id;
             Code = code;
             Time = time;
             OriginId = originId;
