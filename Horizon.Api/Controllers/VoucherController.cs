@@ -1,6 +1,7 @@
 ﻿using Horizon.Aplication.Dtos;
 using Horizon.Aplication.ServiceInterfaces;
 using Microsoft.AspNetCore.Mvc;
+using static Horizon.Domain.Validation.ErroResultOperation;
 
 namespace Horizon.Api.Controllers
 {
@@ -15,13 +16,17 @@ namespace Horizon.Api.Controllers
             _voucherService = voucherService;
         }
 
-        [HttpGet("GenereteVoucher")]
-        public async Task<IActionResult> GenereteVoucher(Guid IdTicket)
+        [HttpGet("GenerateVoucher")]
+        public async Task<IActionResult> GenerateVoucher(Guid IdTicket)
         {
-            VoucherDto vouherDtoResult = await _voucherService.GenereteVoucher(IdTicket);
-            if (vouherDtoResult is null)
-                return BadRequest("Erro ao emitir Voucher");
-            return Ok(vouherDtoResult);
+            Result<VoucherDto> result = await _voucherService.GenerateVoucher(IdTicket);
+
+            if (result.Success)
+                return Ok(result);
+            if(result.StatusCode == 404)
+                return NotFound(result);
+            return BadRequest(result);
+
         }
     }
 }

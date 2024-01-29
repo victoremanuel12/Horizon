@@ -1,8 +1,7 @@
 ﻿using Horizon.Aplication.Dtos;
 using Horizon.Aplication.ServiceInterfaces;
-using Horizon.Domain.Domain;
-using Horizon.Domain.Entities;
 using Horizon.Domain.Interfaces;
+using static Horizon.Domain.Validation.ErroResultOperation;
 
 namespace Horizon.Aplication.Services
 {
@@ -16,39 +15,53 @@ namespace Horizon.Aplication.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<VoucherDto> GenereteVoucher(Guid IdTicket)
+        public async Task<Result<VoucherDto>> GenerateVoucher(Guid IdTicket)
         {
             try
             {
-                var datavoucherSelect =   _unitOfWork.TicketRepository.SelectIncludes(
+                var datavoucherSelect = _unitOfWork.TicketRepository.SelectIncludes(
                     t => t.Id == IdTicket,
-                    c => c.Class, 
+                    c => c.Class,
                     f => f.Class.Flight,
                     d => d.Class.Flight.Destiny,
-                    o => o.Class.Flight.Origin 
-                ); 
+                    o => o.Class.Flight.Origin
+                );
 
-                if (datavoucherSelect is null)
-                    return new VoucherDto();
-                var voucher = new VoucherDto
+                if (datavoucherSelect == null || datavoucherSelect.Count == 0)
+                    return new Result<VoucherDto> { Success = false, ErrorMessage = "Erro ao encontrar dados da passagem", StatusCode = 404 };
+
+                var ticket = datavoucherSelect[0];
+                var flightDateTime = ticket.Class.Flight.Time;
+                var currentDateTime = DateTime.Now;
+                var hoursDifference = (flightDateTime - currentDateTime).TotalHours;
+
+                if (hoursDifference >= 5 && flightDateTime.Date != currentDateTime.Date)
+                    return new Result<VoucherDto> { Success = false, ErrorMessage = "O voucher só pode ser emitido 5 horas antes do voo", StatusCode = 400 };
+
+                var voucherGenerate = new VoucherDto
                 {
-                    IdTicket = datavoucherSelect[0].Id,
-                    PassengerName = datavoucherSelect[0].Name,
-                    PassengerCpf = datavoucherSelect[0].Cpf,
-                    Dispatch = datavoucherSelect[0].Dispatch,
-                    IdFlight = datavoucherSelect[0].Class.FlightId,
-                    Origin = datavoucherSelect[0].Class.Flight.Origin.Name,
-                    Destiny = datavoucherSelect[0].Class.Flight.Destiny.Name,
-
+                    IdTicket = ticket.Id,
+                    PassengerName = ticket.Name,
+                    PassengerCpf = ticket.Cpf,
+                    Dispatch = ticket.Dispatch,
+                    IdFlight = ticket.Class.FlightId,
+                    Origin = ticket.Class.Flight.Origin?.Name, 
+                    Destiny = ticket.Class.Flight.Destiny?.Name, 
                 };
-                return voucher;
+
+                return new Result<VoucherDto> { Success = true, Data = voucherGenerate, StatusCode = 200 };
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
-
+                return new Result<VoucherDto> { Success = false, ErrorMessage = "Ocorreu um erro ao gerar o voucher.", StatusCode = 500 };
             }
-
         }
+
+
+
+
+
+
+
     }
 }

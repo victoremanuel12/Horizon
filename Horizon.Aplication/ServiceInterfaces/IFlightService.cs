@@ -1,18 +1,17 @@
 ﻿using Horizon.Aplication.Dtos;
+using static Horizon.Domain.Validation.ErroResultOperation;
 
 namespace Horizon.Aplication.ServiceInterfaces
 {
     public interface IFlightService
     {
-        Task<List<FlightWithNameAirportDto>> GetAllFlights();
+        Task<List<FlightDetailsDto>> GetAllFlights();
 
-        Task<FlightWithNameAirportDto> GetFlightById(Guid flightId);
+        Task<Result<FlightDetailsDto>> GetFlightById(Guid flightId);
 
         Task<FlightDto> CreateFlight(FlightDto flightDto);
 
-        Task UpdateFlight(Guid flightId, FlightDto flightDto);
-
-        Task<FlightDto> ModifyFlight(FlightDto flightDto);
+        Task<FlightDto> UpdateFlight(Guid id,FlightDto flightDto);
         Task<bool> CancelFlight(Guid flightId);
 
 

@@ -3,6 +3,9 @@ using Horizon.Aplication.Dtos;
 using Horizon.Aplication.ServiceInterfaces;
 using Horizon.Domain.Entities;
 using Horizon.Domain.Interfaces;
+using static Horizon.Domain.Validation.ErroResultOperation;
+using static System.Net.Mime.MediaTypeNames;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Horizon.Aplication.Services
 {
@@ -16,33 +19,36 @@ namespace Horizon.Aplication.Services
             _mapper = mapper;
         }
 
-        public async Task<BuyerDto> CreateNewBuyer(BuyerDto buyerDto)
+        public async Task<Result<BuyerDto>> CreateNewBuyer(BuyerDto buyerDto)
         {
             try
             {
                 Buyer buyerEntity = _mapper.Map<Buyer>(buyerDto);
                 await _unitOfWork.BuyerRepository.CreateAsync(buyerEntity);
                 await _unitOfWork.Commit();
-                return _mapper.Map<BuyerDto>(buyerEntity);
+                BuyerDto buyerDtoResult = _mapper.Map<BuyerDto>(buyerEntity);
+                return new Result<BuyerDto> { Success = true, Data = buyerDtoResult, StatusCode = 200 };
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                return new Result<BuyerDto> { Success = false, ErrorMessage = $"{ex.Message}", StatusCode = 400 };
             }
         }
 
-        public async Task<BuyerDto> GetByerById(Guid id)
+        public async Task<Result<BuyerDto>> GetByerById(Guid id)
         {
             try
             {
                 Buyer buyerFinded = await _unitOfWork.BuyerRepository.GetByIdAsync(id);
-                if(buyerFinded == null) 
-                    return new BuyerDto();
-                return _mapper.Map<BuyerDto>(buyerFinded);
+                if (buyerFinded == null)
+                    return new Result<BuyerDto> { Success = false, ErrorMessage = "Comprador não encontrado", StatusCode = 404 };
+
+                BuyerDto BuyerDtoResult = _mapper.Map<BuyerDto>(buyerFinded);
+                return new Result<BuyerDto> { Success = true, Data = BuyerDtoResult, StatusCode = 404 };
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                return new Result<BuyerDto> { Success = false, ErrorMessage = $"{ex.Message}", StatusCode = 400 };
 
             }
 

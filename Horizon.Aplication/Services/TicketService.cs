@@ -3,6 +3,7 @@ using Horizon.Aplication.Dtos;
 using Horizon.Aplication.ServiceInterfaces;
 using Horizon.Domain.Entities;
 using Horizon.Domain.Interfaces;
+using static Horizon.Domain.Validation.ErroResultOperation;
 
 namespace Horizon.Aplication.Services
 {
@@ -18,7 +19,7 @@ namespace Horizon.Aplication.Services
         }
 
 
-        public async Task<List<TicketDto>> BuyTickets(List<TicketDto> ticketDtoList)
+        public async Task<Result<List<TicketDto>>> BuyTickets(List<TicketDto> ticketDtoList)
         {
             var resultTicketList = new List<TicketDto>();
 
@@ -28,12 +29,12 @@ namespace Horizon.Aplication.Services
                 {
                     Class classSelected = await _unitOfWork.ClassRepository.GetByIdAsync(ticketDto.ClassId);
 
-                    if (classSelected != null && classSelected.Seats > 0)
-                    {
-                        ticketDto.Price = classSelected.Price;
-                        Ticket ticketEntity = _mapper.Map<Ticket>(ticketDto);
-                        if(classSelected.Seats == classSelected.OccupiedSeat) throw new Exception("Não existem mais passagens para essa classe");
+                    if (classSelected == null || classSelected.Seats == classSelected.OccupiedSeat)
+                        throw new Exception("Não existem mais passagens para essa classe");
 
+
+                        Ticket ticketEntity = _mapper.Map<Ticket>(ticketDto);
+                        ticketEntity.Price = classSelected.Price;
                         classSelected.OccupiedSeat += 1 ;
 
                         _unitOfWork.ClassRepository.Update(classSelected);
@@ -42,35 +43,32 @@ namespace Horizon.Aplication.Services
                         await _unitOfWork.Commit();
 
                         resultTicketList.Add(_mapper.Map<TicketDto>(ticketEntity));
-                    }
-                    else
-                    {
-                        resultTicketList.Add(new TicketDto());
-                    }
+                    
                 }
 
-                return resultTicketList;
+                 return new Result<List<TicketDto>> { Success = true, Data = resultTicketList, StatusCode = 200 };
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                return new Result<List<TicketDto>> { Success = false, ErrorMessage = $"{ex.Message}", StatusCode = 400 };
             }
         }
 
 
-        public async Task<IEnumerable<TicketDto>> GetTicketByCpf(string cpf)
+        public async Task<Result<IEnumerable<TicketDto>>> GetTicketByCpf(string cpf)
         {
             try
             {
                 IEnumerable<Ticket> ticketsEntity = await _unitOfWork.TicketRepository.GetListByExpressionAsync(e => e.Cpf == cpf);
-                if (!ticketsEntity.Any()) return new List<TicketDto>();
+                if (!ticketsEntity.Any()) return new Result<IEnumerable<TicketDto>> { Success = false, ErrorMessage ="Nenhuma passagem foi encontrada para esse CPF" ,StatusCode = 404 };
 
                 IEnumerable<TicketDto> ticketsDtoResult = _mapper.Map<IEnumerable<TicketDto>>(ticketsEntity);
-                return ticketsDtoResult;
+
+                return new Result<IEnumerable<TicketDto>> { Success = true, Data = ticketsDtoResult, StatusCode = 200 };
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                return new Result<IEnumerable<TicketDto>> { Success = false, ErrorMessage = $"{ex.Message}", StatusCode = 400 };
             }
 
         }

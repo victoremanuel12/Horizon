@@ -2,8 +2,8 @@
 using Horizon.Aplication.Dtos;
 using Horizon.Aplication.ServiceInterfaces;
 using Horizon.Domain.Domain;
-using Horizon.Domain.Entities;
 using Horizon.Domain.Interfaces;
+using static Horizon.Domain.Validation.ErroResultOperation;
 
 namespace Horizon.Aplication.Services
 {
@@ -16,28 +16,31 @@ namespace Horizon.Aplication.Services
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public async Task<List<FlightWithNameAirportDto>> GetAllFlights()
+        public async Task<List<FlightDetailsDto>> GetAllFlights()
         {
             try
             {
                 IEnumerable<Flight> flightsEntity = await _unitOfWork.FlightRepository.GetAllAsync();
-                List<FlightWithNameAirportDto> flightsWithNameDto = new List<FlightWithNameAirportDto>();
+
+
+                List<FlightDetailsDto> flightsWithNameDto = new List<FlightDetailsDto>();
 
                 foreach (var flight in flightsEntity)
                 {
+                    var flightWithIncludes = _unitOfWork.FlightRepository.SelectIncludes(f => f.Id == flight.Id, d => d.Destiny, o => o.Origin);
+
                     if (!flight.Canceled)
                     {
-                        Airport originClassType = await _unitOfWork.AirportRepository.GetByIdAsync(flight.OriginId);
-                        Airport destinyClassType = await _unitOfWork.AirportRepository.GetByIdAsync(flight.DestinyId);
-                        FlightWithNameAirportDto flightDto = new FlightWithNameAirportDto
+
+                        FlightDetailsDto flightDto = new FlightDetailsDto
                         {
                             Id = flight.Id,
                             Code = flight.Code,
                             Time = flight.Time,
-                            OriginId = originClassType.Id,
-                            DestinyId = destinyClassType.Id,
-                            NameOrigin = originClassType.Name,
-                            NameDestiny = destinyClassType.Name,
+                            OriginId = flightWithIncludes[0].OriginId,
+                            DestinyId = flightWithIncludes[0].DestinyId,
+                            NameOrigin = flightWithIncludes[0].Origin.Name,
+                            NameDestiny = flightWithIncludes[0].Destiny.Name,
                             Canceled = flight.Canceled
                         };
 
@@ -55,33 +58,47 @@ namespace Horizon.Aplication.Services
         }
 
 
-        public async Task<FlightWithNameAirportDto> GetFlightById(Guid flightId)
+        public async Task<Result<FlightDetailsDto>> GetFlightById(Guid flightId)
         {
             try
             {
+                var flight = _unitOfWork.FlightRepository
+                    .SelectIncludes(f => f.Id == flightId, d => d.Destiny, o => o.Origin, c => c.Classes)
+                    .FirstOrDefault();
 
-                Flight flightEntity = await _unitOfWork.FlightRepository.GetByIdAsync(flightId);
-                Airport originClassType = await _unitOfWork.AirportRepository.GetByIdAsync(flightEntity.OriginId);
-                Airport destinyClassType = await _unitOfWork.AirportRepository.GetByIdAsync(flightEntity.DestinyId);
+                if (flight == null)
+                    return new Result<FlightDetailsDto> { Success = false, ErrorMessage = "Dados do Voo não encontrados", StatusCode = 404 };
 
-                FlightWithNameAirportDto flightDtoResult = new FlightWithNameAirportDto
+
+                var availableClasses = flight.Classes.Where(item => item.OccupiedSeat < item.Seats).ToList();
+
+                if (availableClasses.Count == 0)
+                    return new Result<FlightDetailsDto> { Success = false, ErrorMessage = "Não existem mais assentos disponíveis para este voo", StatusCode = 400 };
+
+                List<ClassDto> classDtoList = _mapper.Map<List<ClassDto>>(availableClasses);
+
+                var flightDetailsDto = new FlightDetailsDto
                 {
-                    Id = flightEntity.Id,
-                    Code = flightEntity.Code,
-                    Time = flightEntity.Time,
-                    OriginId = originClassType.Id,
-                    DestinyId = destinyClassType.Id,
-                    NameOrigin = originClassType.Name,
-                    NameDestiny = destinyClassType.Name,
-                    Canceled = flightEntity.Canceled
+                    Id = flight.Id,
+                    Code = flight.Code,
+                    Time = flight.Time,
+                    OriginId = flight.OriginId,
+                    DestinyId = flight.DestinyId,
+                    NameOrigin = flight.Origin?.Name,
+                    NameDestiny = flight.Destiny?.Name,
+                    Canceled = flight.Canceled,
+                    Classes = classDtoList
                 };
-                return flightDtoResult;
+
+                return new Result<FlightDetailsDto> { Success = true, Data = flightDetailsDto, StatusCode = 200 };
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                return new Result<FlightDetailsDto> { Success = false, ErrorMessage = $"{ex.Message}", StatusCode = 500 };
             }
         }
+
+
 
         public async Task<FlightDto> CreateFlight(FlightDto flightDto)
         {
@@ -137,10 +154,7 @@ namespace Horizon.Aplication.Services
         }
 
 
-        public Task UpdateFlight(Guid flightId, FlightDto flightDto)
-        {
-            throw new NotImplementedException();
-        }
+
 
         public async Task<bool> CancelFlight(Guid flightId)
         {
@@ -163,16 +177,16 @@ namespace Horizon.Aplication.Services
             }
         }
 
-        public async Task<FlightDto> ModifyFlight(FlightDto flightDto)
+        public async Task<FlightDto> UpdateFlight(Guid id, FlightDto flightDto)
         {
             try
             {
-                Flight flightEntity = _mapper.Map<Flight>(flightDto);
+                Flight flightEntity = await _unitOfWork.FlightRepository.GetByIdAsync(id);
+                Flight flightEntityUpdated = _mapper.Map<Flight>(flightDto);
 
                 _unitOfWork.FlightRepository.Update(flightEntity);
                 await _unitOfWork.Commit();
-
-                return _mapper.Map<FlightDto>(flightEntity);
+                return _mapper.Map<FlightDto>(flightEntityUpdated);
             }
             catch (Exception ex)
             {

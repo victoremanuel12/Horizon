@@ -22,14 +22,18 @@ namespace Horizon.Domain.Entities
         public Class Class { get; set; }
         public Buy Buy { get; set; }
 
-
-    
+        public Ticket(Guid classId, string name, string cpf, DateTime birthdate, decimal price, bool dispatch, bool canceled)
+        {
+            ValidateDomain(classId, name, cpf, birthdate, price, dispatch, canceled);
+        }
 
         public Ticket(Guid classId, string name, string cpf, DateTime birthdate, decimal price, bool dispatch, Guid buyId, bool canceled, Guid baggageId)
         {
-            ValidateDomain(classId, name, cpf, birthdate, price, dispatch, buyId, canceled, baggageId);
+            ValidateDomain(classId, name, cpf, birthdate, price, dispatch, canceled);
+
         }
-        private void ValidateDomain(Guid classId, string name, string cpf, DateTime birthdate, decimal price, bool dispatch, Guid buyId, bool canceled, Guid baggageId)
+
+        private void ValidateDomain(Guid classId, string name, string cpf, DateTime birthdate, decimal price, bool dispatch, bool canceled)
         {
             DomainExceptionValidation.When(String.IsNullOrEmpty(name), "O nome do passageiro deve ser informado ");
             DomainExceptionValidation.When(String.IsNullOrEmpty(cpf), "O CPF do passageiro deve ser informado ");
@@ -39,11 +43,11 @@ namespace Horizon.Domain.Entities
             Name = name;
             Cpf = cpf;
             Birthdate = birthdate;
-            Price = dispatch ? price * 1.1m : price; 
+            Price = dispatch ? price * 1.1m : price;
             Dispatch = dispatch;
-            BuyId = buyId;
             Canceled = canceled;
-            BaggageId = dispatch ? Guid.NewGuid() : baggageId;
+            BaggageId = dispatch ? Guid.NewGuid() : Guid.Empty;
         }
     }
 }
+

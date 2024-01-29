@@ -1,6 +1,4 @@
-﻿using Horizon.Domain.Entities;
-
-namespace Horizon.Aplication.Dtos
+﻿namespace Horizon.Aplication.Dtos
 {
     public class BuyDto
     {
@@ -9,7 +7,6 @@ namespace Horizon.Aplication.Dtos
         public DateTime Date { get; set; }
         public bool Canceled { get; set; }
         public Guid BuyerId { get; set; }
-
         public List<TicketDto> Tickets { get; set; }
     }
 }

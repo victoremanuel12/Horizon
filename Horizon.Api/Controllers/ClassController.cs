@@ -1,6 +1,9 @@
 ﻿using Horizon.Aplication.Dtos;
 using Horizon.Aplication.ServiceInterfaces;
+using Horizon.Aplication.Services;
+using Horizon.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
+using static Horizon.Domain.Validation.ErroResultOperation;
 
 namespace Horizon.Api.Controllers
 {
@@ -16,22 +19,24 @@ namespace Horizon.Api.Controllers
         }
 
         [HttpPut("ChangePriceSeats/{id:Guid}")]
-        public async Task<IActionResult> ChangeSeatsPrice(Guid id, [FromBody] ClassDto classDto)
+        public async Task<IActionResult> ChangeSeatsPrice(Guid id, [FromBody] ChangeSeatsPriceDto changePriceDto)
         {
-            if (classDto is null) return BadRequest("Preencha os dados da classe corretamente");
-            ClassDto classDtoResult = await _classService.ChangeSeatsPrice(id, classDto);
-            if (classDtoResult is null) return BadRequest("Erro ao modificar dados da classe do voo");
-            return Ok(classDtoResult);
+            Result<ClassDto> result = await _classService.ChangeSeatsPrice(id, changePriceDto);
+            if (result.Success)
+                return Ok(result);
+            return BadRequest(result);
+
+
         }
         [HttpPost]
         public async Task<IActionResult> CreateClassToVoo(List<ClassDto> classDto)
         {
             if (classDto is null) return BadRequest("Preencha os dados da classe corretamente");
-            List<ClassDto> classDtoResult = await _classService.CreateClassToFlight(classDto);
-            if (classDtoResult is null)
-                return BadRequest("Houve um erro ao criar a(s) classe(s)");
-            return Ok(classDtoResult);
+            Result<List<ClassDto>> result = await _classService.CreateClassToFlight(classDto);
+            if (result.Success)
+                return Ok(result);
+            return BadRequest(result);
         }
-        
+
     }
 }

@@ -1,0 +1,15 @@
+C:\Users\victor.silva\Documents\Horizon\Horizon.Aplication\bin\Release\net7.0\Horizon.Aplication.deps.json
+C:\Users\victor.silva\Documents\Horizon\Horizon.Aplication\bin\Release\net7.0\Horizon.Aplication.dll
+C:\Users\victor.silva\Documents\Horizon\Horizon.Aplication\bin\Release\net7.0\Horizon.Aplication.pdb
+C:\Users\victor.silva\Documents\Horizon\Horizon.Aplication\bin\Release\net7.0\Horizon.Domain.dll
+C:\Users\victor.silva\Documents\Horizon\Horizon.Aplication\bin\Release\net7.0\Horizon.Domain.pdb
+C:\Users\victor.silva\Documents\Horizon\Horizon.Aplication\obj\Release\net7.0\Horizon.Aplication.csproj.AssemblyReference.cache
+C:\Users\victor.silva\Documents\Horizon\Horizon.Aplication\obj\Release\net7.0\Horizon.Aplication.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\victor.silva\Documents\Horizon\Horizon.Aplication\obj\Release\net7.0\Horizon.Aplication.AssemblyInfoInputs.cache
+C:\Users\victor.silva\Documents\Horizon\Horizon.Aplication\obj\Release\net7.0\Horizon.Aplication.AssemblyInfo.cs
+C:\Users\victor.silva\Documents\Horizon\Horizon.Aplication\obj\Release\net7.0\Horizon.Aplication.csproj.CoreCompileInputs.cache
+C:\Users\victor.silva\Documents\Horizon\Horizon.Aplication\obj\Release\net7.0\Horizon.Aplication.csproj.CopyComplete
+C:\Users\victor.silva\Documents\Horizon\Horizon.Aplication\obj\Release\net7.0\Horizon.Aplication.dll
+C:\Users\victor.silva\Documents\Horizon\Horizon.Aplication\obj\Release\net7.0\refint\Horizon.Aplication.dll
+C:\Users\victor.silva\Documents\Horizon\Horizon.Aplication\obj\Release\net7.0\Horizon.Aplication.pdb
+C:\Users\victor.silva\Documents\Horizon\Horizon.Aplication\obj\Release\net7.0\ref\Horizon.Aplication.dll

@@ -23,7 +23,7 @@ namespace Horizon.Infra.IoC
                 options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
             });
 
-            services.AddScoped<IAirplaneService,AirplaneService>();
+            services.AddScoped<IAirportService,AirportService>();
             services.AddScoped<IClassService, ClassService>();
             services.AddScoped<ICityService, CityService>();
             services.AddScoped<IFlightService, FlightService>();
@@ -33,6 +33,8 @@ namespace Horizon.Infra.IoC
             services.AddScoped<IVisitorService, VisitorService>();
             services.AddScoped<IBuyerService, BuyerService>();
             services.AddScoped<IVoucherService, VoucherService>();
+            services.AddScoped<IBaggageTagService, BaggageTagService>();
+
 
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();

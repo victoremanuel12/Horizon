@@ -3,6 +3,7 @@ using Horizon.Aplication.Dtos;
 using Horizon.Aplication.ServiceInterfaces;
 using Horizon.Domain.Entities;
 using Horizon.Domain.Interfaces;
+using static Horizon.Domain.Validation.ErroResultOperation;
 
 namespace Horizon.Aplication.Services
 {
@@ -16,24 +17,24 @@ namespace Horizon.Aplication.Services
             _mapper = mapper;
         }
 
-        public async Task<ClassDto> ChangeSeatsPrice(Guid classId, ClassDto classDto)
+        public async Task<Result<ClassDto>> ChangeSeatsPrice(Guid classId, ChangeSeatsPriceDto changePriceDto)
         {
             try
             {
-                Class classEntity = _mapper.Map<Class>(classDto);
-                var teste = await _unitOfWork.ClassRepository.UpdateWithCondition(e => e.Id == classEntity.Id);
-                _mapper.Map(classDto, classEntity);
+                Class classEntity = await _unitOfWork.ClassRepository.GetByIdAsync(classId);
+                classEntity.Price = changePriceDto.Price;
                 await _unitOfWork.Commit();
-                return _mapper.Map<ClassDto>(classEntity);
+                ClassDto classDtoResult = _mapper.Map<ClassDto>(classEntity);
+                return new Result<ClassDto> { Success = true, Data = classDtoResult, StatusCode = 200 };
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                return new Result<ClassDto> { Success = false, ErrorMessage = $"{ex.Message}", StatusCode = 400 };
             }
 
         }
 
-        public async Task<List<ClassDto>> CreateClassToFlight(List<ClassDto> classes)
+        public async Task<Result<List<ClassDto>>> CreateClassToFlight(List<ClassDto> classes)
         {
             try
             {
@@ -50,12 +51,12 @@ namespace Horizon.Aplication.Services
                     classDtoResult.Add(createdClassDto);
                 }
 
-                return classDtoResult;
+                return new Result<List<ClassDto>> { Success = true, Data = classDtoResult, StatusCode = 200 };
 
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                return new Result<List<ClassDto>> { Success = false, ErrorMessage = $"{ex.Message}", StatusCode = 400 };
 
             }
         }
@@ -84,9 +85,6 @@ namespace Horizon.Aplication.Services
 
             if (duplicateClassTypes.Any())
                 throw new InvalidOperationException("Não é permitido um voo com duas classes iguais");
-
-
-
         }
     }
 }

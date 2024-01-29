@@ -10,5 +10,6 @@
         public Visitor Visitor { get; set; }
         public Buyer Buyer { get; set; }
         public List<Ticket> Tickets { get; set; } = new List<Ticket>();
+     
     }
 }

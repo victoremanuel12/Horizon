@@ -1,6 +1,9 @@
 ﻿using Horizon.Aplication.Dtos;
 using Horizon.Aplication.ServiceInterfaces;
+using Horizon.Aplication.Services;
+using Horizon.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
+using static Horizon.Domain.Validation.ErroResultOperation;
 
 namespace Horizon.Api.Controllers
 {
@@ -17,7 +20,7 @@ namespace Horizon.Api.Controllers
         [HttpGet("AllFlights")]
         public async Task<IActionResult> List()
         {
-            List<FlightWithNameAirportDto> resultDto = await _flightService.GetAllFlights();
+            List<FlightDetailsDto> resultDto = await _flightService.GetAllFlights();
             if (!resultDto.Any())
                 return NotFound("Não existem voos cadastrados");
             return Ok(resultDto);
@@ -26,10 +29,13 @@ namespace Horizon.Api.Controllers
         [HttpGet("{id:Guid}", Name = "GetFlightById")]
         public async Task<IActionResult> GetFlightById(Guid id)
         {
-            FlightWithNameAirportDto flightDtoResult = await _flightService.GetFlightById(id);
-            if (flightDtoResult is null) 
-                return NotFound("Voo não encontrado");
-            return Ok(flightDtoResult);
+            Result<FlightDetailsDto> result = await _flightService.GetFlightById(id);
+            if (result.Success)
+                return Ok(result);
+            if (result.StatusCode == 404)
+                return NotFound(result);
+            return BadRequest(result);
+
         }
 
         [HttpPost]
@@ -54,11 +60,11 @@ namespace Horizon.Api.Controllers
             return BadRequest("Erro ao cancelar voo");
         }
 
-        [HttpPut("{id:Guid}")]
-        public async Task<IActionResult> ModifyFlight(Guid id, [FromBody] FlightDto flightDto)
+        [HttpPut("{idFlight:Guid}")]
+        public async Task<IActionResult> UpdateFlight(Guid idFlight, [FromBody] FlightDto flightDto)
         {
             if (flightDto is null) return BadRequest("Dados para alteração do Voo inválidos");
-            FlightDto resultDto = await _flightService.ModifyFlight(flightDto);
+            FlightDto resultDto = await _flightService.UpdateFlight(idFlight, flightDto);
             if (resultDto is not null)
                 return Ok(resultDto);
             return BadRequest("Houve um erro ao modificar o voo");

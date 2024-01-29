@@ -1,7 +1,9 @@
 ﻿using Horizon.Aplication.Dtos;
 using Horizon.Aplication.ServiceInterfaces;
+using Horizon.Aplication.Services;
 using Horizon.Domain.Interfaces.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using static Horizon.Domain.Validation.ErroResultOperation;
 
 namespace Horizon.Api.Controllers
 {
@@ -18,18 +20,21 @@ namespace Horizon.Api.Controllers
         public async Task<IActionResult> OrderBuy(BuyDto buyDto)
         {
             
-            BuyDto OrderBuyDtoResult = await _buyService.OrderBuyTikets(buyDto);
-            if (OrderBuyDtoResult is null)
-                return BadRequest("Houve um erro ao Realizar compra");
-            return Ok(OrderBuyDtoResult);
+            Result<BuyDto> result = await _buyService.OrderBuyTikets(buyDto);
+            if (result.Success)
+                return Ok(result);
+            return BadRequest(result);
+          
         }
-        [HttpPut("CancelBuy")]
+        [HttpPut("CancelBuy/{idBuy:Guid}")]
         public async Task<IActionResult> CancelBuy(Guid idBuy)
         {
-            BuyDto OrderBuyDtoResult = await _buyService.CancelBuy(idBuy);
-            if (OrderBuyDtoResult is null)
-                return NotFound("Houve um erro ao cancelar a compra");
-            return Ok("Compra cancelada com sucesso!");
+            Result<BuyDto> result = await _buyService.CancelBuy(idBuy);
+            if (result.Success)
+                return Ok(result);
+            if (result.StatusCode == 404)
+                return NotFound(result);
+            return BadRequest(result);
         }
     }
 }

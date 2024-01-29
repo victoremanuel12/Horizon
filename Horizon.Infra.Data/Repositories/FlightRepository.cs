@@ -10,6 +10,7 @@ namespace Horizon.Infra.Data.Repositories
         public FlightRepository(ApplicationDbContext context) : base(context)
         {
         }
+
       
     }
 }

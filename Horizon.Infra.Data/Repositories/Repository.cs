@@ -1,12 +1,7 @@
-﻿using Horizon.Domain.Entities;
-using Horizon.Domain.Interfaces.Repositories;
+﻿using Horizon.Domain.Interfaces.Repositories;
 using Horizon.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System;
-using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
 
 namespace Horizon.Infra.Data.Repositories
 {

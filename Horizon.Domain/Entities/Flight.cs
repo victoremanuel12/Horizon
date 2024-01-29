@@ -14,7 +14,7 @@ namespace Horizon.Domain.Domain
         public Airport Origin { get; set; }
         public Airport Destiny { get; set; }
 
-        public List<Class> Classes { get; set; } 
+        public  List<Class> Classes { get; set; } 
 
       
 

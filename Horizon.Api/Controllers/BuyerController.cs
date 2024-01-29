@@ -1,7 +1,7 @@
 ﻿using Horizon.Aplication.Dtos;
 using Horizon.Aplication.ServiceInterfaces;
-using Horizon.Aplication.Services;
 using Microsoft.AspNetCore.Mvc;
+using static Horizon.Domain.Validation.ErroResultOperation;
 
 namespace Horizon.Api.Controllers
 {
@@ -19,18 +19,20 @@ namespace Horizon.Api.Controllers
         [HttpGet("{id:Guid}")]
         public async Task<IActionResult> GetBuyId(Guid id)
         {
-            BuyerDto buyerDtoResult = await _buyerService.GetByerById(id);
-            if(buyerDtoResult == null)
-                return NotFound("Comprador não encontrado");
-            return Ok(buyerDtoResult);
+            Result<BuyerDto> result = await _buyerService.GetByerById(id);
+            if (result.Success)
+                return Ok(result);
+            return NotFound(result);
         }
         [HttpPost]
-        public async Task<IActionResult> CreateVisitor(BuyerDto buyerDto)
+        public async Task<IActionResult> CreateBuyer(BuyerDto buyerDto)
         {
-            BuyerDto buyerDtoResult = await _buyerService.CreateNewBuyer(buyerDto);
-            if (buyerDtoResult is null)
-                return BadRequest("Erro ao cadastrar visitante");
-            return Ok(buyerDtoResult);
+
+            Result<BuyerDto> result = await _buyerService.CreateNewBuyer(buyerDto);
+            if (result.Success)
+                return Ok(result);
+            return BadRequest(result);
+
         }
     }
 }

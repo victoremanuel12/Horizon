@@ -20,21 +20,15 @@ namespace Horizon.Domain.Entities
             ValidateDomain(classTypeId,flightId, seats, price, occupiedSeat);
 
         }
-        public Class()
-        {
-            
-        }
         private void ValidateDomain(Guid classTypeId, Guid flightId, int seats, decimal price, int occupiedSeat)
         {
             DomainExceptionValidation.When(seats < 0, "O cadastro da classe deve te no minimo um assento ou não existem mais assentos nessa classe");
             DomainExceptionValidation.When(price < 0, "O valor do assento deve ser informado");
-            DomainExceptionValidation.When(occupiedSeat == seats , "Não existem mais assentos para essa classe");
-
             ClassTypeId = classTypeId;
             FlightId = flightId;
             Seats = seats;
             Price = price;
-            OccupiedSeat -= occupiedSeat;
+            OccupiedSeat = occupiedSeat;
         }
 
     }
