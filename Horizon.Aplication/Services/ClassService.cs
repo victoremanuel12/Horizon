@@ -22,6 +22,9 @@ namespace Horizon.Aplication.Services
             try
             {
                 Class classEntity = await _unitOfWork.ClassRepository.GetByIdAsync(classId);
+                if (classEntity == null)
+                    return new Result<ClassDto> { Success = false, ErrorMessage = $"Class do voo não encontrada", StatusCode = 404 };
+
                 classEntity.Price = changePriceDto.Price;
                 await _unitOfWork.Commit();
                 ClassDto classDtoResult = _mapper.Map<ClassDto>(classEntity);
@@ -63,18 +66,18 @@ namespace Horizon.Aplication.Services
 
         private async Task HasFlightWithSameClass(ClassDto classDto)
         {
-            
+
             var classOfFlight = await _unitOfWork.ClassRepository.GetListByExpressionAsync(e => e.FlightId == classDto.FlightId);
             if (classOfFlight.Count() > 0)
             {
-                foreach(var classItem in classOfFlight)
+                foreach (var classItem in classOfFlight)
                 {
                     if (classItem.ClassTypeId == classDto.ClassTypeId)
                         throw new InvalidOperationException("Esse voo já está cadastrado com essa(s) classe(s)");
                 }
             }
 
-            
+
         }
         private void HasduplicateClassTypes(List<ClassDto> classDtoList)
         {

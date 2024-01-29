@@ -1,7 +1,7 @@
 ﻿using Horizon.Aplication.Dtos;
 using Horizon.Aplication.ServiceInterfaces;
-using Horizon.Aplication.Services;
 using Microsoft.AspNetCore.Mvc;
+using static Horizon.Domain.Validation.ErroResultOperation;
 
 namespace Horizon.Api.Controllers
 {
@@ -18,9 +18,12 @@ namespace Horizon.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> List()
         {
-            IEnumerable<ClassTypeDto> resultDto = await _classTypeService.GetAllClassTypes();
-            if (resultDto is null) return NotFound("Não existem tipo de classes cadastradas");
-            return Ok(resultDto);
+            Result<IEnumerable<ClassTypeDto>> result = await _classTypeService.GetAllClassTypes();
+            if (result.Success)
+                return Ok(result);
+            if (result.StatusCode == 404)
+                return NotFound(result);
+            return BadRequest(result);
         }
     }
 }

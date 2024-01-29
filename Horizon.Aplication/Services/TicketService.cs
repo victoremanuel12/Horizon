@@ -60,7 +60,8 @@ namespace Horizon.Aplication.Services
             try
             {
                 IEnumerable<Ticket> ticketsEntity = await _unitOfWork.TicketRepository.GetListByExpressionAsync(e => e.Cpf == cpf);
-                if (!ticketsEntity.Any()) return new Result<IEnumerable<TicketDto>> { Success = false, ErrorMessage ="Nenhuma passagem foi encontrada para esse CPF" ,StatusCode = 404 };
+                if (!ticketsEntity.Any()) 
+                    return new Result<IEnumerable<TicketDto>> { Success = false, ErrorMessage ="Nenhuma passagem foi encontrada para esse CPF" ,StatusCode = 404 };
 
                 IEnumerable<TicketDto> ticketsDtoResult = _mapper.Map<IEnumerable<TicketDto>>(ticketsEntity);
 

@@ -36,7 +36,7 @@ namespace Horizon.Aplication.Services
                 await _unitOfWork.Commit();
                 BuyDto buyDtoResult = _mapper.Map<BuyDto>(orderBuyEntity);
                 buyDtoResult.Tickets = tiketsBought.Data;
-                return new Result<BuyDto> { Success = true, Data = buyDtoResult, StatusCode = 200 };
+                return new Result<BuyDto> { Success = true, Data = buyDtoResult, StatusCode = 201 };
             }
             catch (Exception ex)
             {

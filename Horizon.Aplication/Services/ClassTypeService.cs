@@ -3,6 +3,7 @@ using Horizon.Aplication.Dtos;
 using Horizon.Aplication.ServiceInterfaces;
 using Horizon.Domain.Entities;
 using Horizon.Domain.Interfaces;
+using static Horizon.Domain.Validation.ErroResultOperation;
 
 namespace Horizon.Aplication.Services
 {
@@ -17,15 +18,19 @@ namespace Horizon.Aplication.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<ClassTypeDto>> GetAllClassTypes()
+        public async Task<Result<IEnumerable<ClassTypeDto>>> GetAllClassTypes()
         {
-            try 
+            try
             {
                 IEnumerable<ClassType> classTypes = await _unitOfWork.ClassTypeRepository.GetAllAsync();
-                return _mapper.Map<IEnumerable<ClassTypeDto>>(classTypes);
-            }catch (Exception ex)
+                if (classTypes is null)
+                    return new Result<IEnumerable<ClassTypeDto>> { Success = false, ErrorMessage = "Os tipos de classe não foram encontradas ", StatusCode = 404 };
+                IEnumerable<ClassTypeDto> classTypeDto = _mapper.Map<IEnumerable<ClassTypeDto>>(classTypes);
+                return new Result<IEnumerable<ClassTypeDto>> { Success = true, Data = classTypeDto, StatusCode = 200 };
+            }
+            catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                return new Result<IEnumerable<ClassTypeDto>> { Success = false, ErrorMessage = $"{ex.Message}", StatusCode = 400 };
             }
         }
     }

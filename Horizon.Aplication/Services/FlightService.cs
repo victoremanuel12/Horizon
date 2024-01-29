@@ -16,14 +16,15 @@ namespace Horizon.Aplication.Services
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public async Task<List<FlightDetailsDto>> GetAllFlights()
+        public async Task<Result<IEnumerable<FlightDetailsDto>>> GetAllFlights()
         {
             try
             {
                 IEnumerable<Flight> flightsEntity = await _unitOfWork.FlightRepository.GetAllAsync();
+                if (flightsEntity is null)
+                    return new Result<IEnumerable<FlightDetailsDto>> { Success = false, ErrorMessage = "Nenhum voo foi encontrado", StatusCode = 404 };
 
-
-                List<FlightDetailsDto> flightsWithNameDto = new List<FlightDetailsDto>();
+                List<FlightDetailsDto> flightsDetailsDto = new List<FlightDetailsDto>();
 
                 foreach (var flight in flightsEntity)
                 {
@@ -44,16 +45,16 @@ namespace Horizon.Aplication.Services
                             Canceled = flight.Canceled
                         };
 
-                        flightsWithNameDto.Add(flightDto);
+                        flightsDetailsDto.Add(flightDto);
                     }
 
                 }
 
-                return flightsWithNameDto;
+                return new Result<IEnumerable<FlightDetailsDto>> { Success = true, Data = flightsDetailsDto, StatusCode = 200 };
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                return new Result<IEnumerable<FlightDetailsDto>> { Success = false, ErrorMessage = $"{ex.Message}", StatusCode = 400 };
             }
         }
 
@@ -73,7 +74,7 @@ namespace Horizon.Aplication.Services
                 var availableClasses = flight.Classes.Where(item => item.OccupiedSeat < item.Seats).ToList();
 
                 if (availableClasses.Count == 0)
-                    return new Result<FlightDetailsDto> { Success = false, ErrorMessage = "Não existem mais assentos disponíveis para este voo", StatusCode = 400 };
+                    return new Result<FlightDetailsDto> { Success = false, ErrorMessage = "Não existem mais assentos disponíveis para este voo", StatusCode = 404 };
 
                 List<ClassDto> classDtoList = _mapper.Map<List<ClassDto>>(availableClasses);
 
@@ -94,13 +95,13 @@ namespace Horizon.Aplication.Services
             }
             catch (Exception ex)
             {
-                return new Result<FlightDetailsDto> { Success = false, ErrorMessage = $"{ex.Message}", StatusCode = 500 };
+                return new Result<FlightDetailsDto> { Success = false, ErrorMessage = $"{ex.Message}", StatusCode = 400 };
             }
         }
 
 
 
-        public async Task<FlightDto> CreateFlight(FlightDto flightDto)
+        public async Task<Result<FlightDto>>  CreateFlight(FlightDto flightDto)
         {
             try
             {
@@ -112,13 +113,13 @@ namespace Horizon.Aplication.Services
                 await _unitOfWork.FlightRepository.CreateAsync(flightEntity);
                 await _unitOfWork.Commit();
 
-
-                return _mapper.Map<FlightDto>(flightEntity);
+                FlightDto flightDtoResult = _mapper.Map<FlightDto>(flightEntity);
+                return new Result<FlightDto> { Success = true, Data = flightDtoResult, StatusCode = 201 };
 
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                return new Result<FlightDto> { Success = false, ErrorMessage = $"{ex.Message}", StatusCode = 400 };
             }
         }
 
@@ -156,41 +157,45 @@ namespace Horizon.Aplication.Services
 
 
 
-        public async Task<bool> CancelFlight(Guid flightId)
+        public async Task<Result<bool>> CancelFlight(Guid flightId)
         {
             try
             {
                 Flight flightEntity = await _unitOfWork.FlightRepository.GetByIdAsync(flightId);
-
+                if (flightEntity is  null)
+                    return new Result<bool> { Success = false, ErrorMessage = "Voo não encontrado", StatusCode = 404 };
                 if (flightEntity != null)
                 {
                     flightEntity.Canceled = true;
                     _unitOfWork.FlightRepository.Update(flightEntity);
                     await _unitOfWork.Commit();
-                    return true;
+                    return new Result<bool> { Success = true,SucessMessage = "Voo cancelado com sucesso",StatusCode = 200 };
                 }
-                return false;
+                 return new Result<bool> { Success = false,ErrorMessage = "Houve um erro ao cancelar o voo", StatusCode = 400 };
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                return new Result<bool> { Success = false, ErrorMessage = $"{ex.Message}", StatusCode = 400 };
             }
         }
 
-        public async Task<FlightDto> UpdateFlight(Guid id, FlightDto flightDto)
+        public async Task<Result<FlightDto>> UpdateFlight(Guid id, FlightDto flightDto)
         {
             try
             {
                 Flight flightEntity = await _unitOfWork.FlightRepository.GetByIdAsync(id);
+                if (flightEntity is null)
+                    return new Result<FlightDto> { Success = false, ErrorMessage = "Voo não encontrado", StatusCode = 404 };
                 Flight flightEntityUpdated = _mapper.Map<Flight>(flightDto);
 
-                _unitOfWork.FlightRepository.Update(flightEntity);
+                _unitOfWork.FlightRepository.Update(flightEntityUpdated);
                 await _unitOfWork.Commit();
-                return _mapper.Map<FlightDto>(flightEntityUpdated);
+                FlightDto flightDtoResult =  _mapper.Map<FlightDto>(flightEntityUpdated);
+                return  new Result<FlightDto> { Success = true, Data = flightDtoResult, StatusCode = 200 };
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                return new Result<FlightDto> { Success = false, ErrorMessage = $"{ex.Message}", StatusCode = 400 };
             }
         }
 

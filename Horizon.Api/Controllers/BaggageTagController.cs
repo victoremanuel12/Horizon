@@ -20,12 +20,12 @@ namespace Horizon.Api.Controllers
         [HttpGet("{idTicket:Guid}")]
         public async Task<IActionResult> GenereteBaggageTag(Guid idTicket)
         {
-            Result<BaggageTagDto> baggageTagDtoResult = await _blogTagService.GenerateBaggageTag(idTicket);
-            if (baggageTagDtoResult.Success)
-                return Ok(baggageTagDtoResult.Data);
-            if (baggageTagDtoResult.StatusCode == 404)
-                return NotFound(baggageTagDtoResult);
-            return BadRequest(baggageTagDtoResult);
+            Result<BaggageTagDto> result = await _blogTagService.GenerateBaggageTag(idTicket);
+            if (result.Success)
+                return Ok(result);
+            if (result.StatusCode == 404)
+                return NotFound(result);
+            return BadRequest(result);
         }
     }
 }

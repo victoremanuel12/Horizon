@@ -3,6 +3,7 @@ using Horizon.Aplication.Dtos;
 using Horizon.Aplication.ServiceInterfaces;
 using Horizon.Domain.Entities;
 using Horizon.Domain.Interfaces;
+using static Horizon.Domain.Validation.ErroResultOperation;
 
 namespace Horizon.Aplication.Services
 {
@@ -15,18 +16,20 @@ namespace Horizon.Aplication.Services
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public async Task<IEnumerable<CityDto>> GetAllCities()
+        public async Task<Result<IEnumerable<CityDto>>> GetAllCities()
         {
             try
             {
                 IEnumerable<City> citiesEntity = await _unitOfWork.CityRepository.GetAllAsync();
-                IEnumerable<CityDto> citiesDto = _mapper.Map<IEnumerable<CityDto>>(citiesEntity);
+                if (citiesEntity is null)
+                    return new Result<IEnumerable<CityDto>> { Success = false, ErrorMessage = "Nenhum voo foi encontrado", StatusCode = 404 };
 
-                return citiesDto;
+                IEnumerable<CityDto> citiesDto = _mapper.Map<IEnumerable<CityDto>>(citiesEntity);
+                return new Result<IEnumerable<CityDto>> { Success = true, Data = citiesDto, StatusCode = 200 };
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                return new Result<IEnumerable<CityDto>> { Success = false, ErrorMessage = $"{ex.Message}", StatusCode = 400 };
             }
         }
     }

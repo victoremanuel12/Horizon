@@ -24,13 +24,14 @@ namespace Horizon.Aplication.Services
                 IEnumerable<Airport> airports = await _unitOfWork.AirportRepository.GetAllAsync();
                 if (airports is null)
                     return new Result<IEnumerable<AirportDto>> { Success = false, ErrorMessage = "Nenhum voo foi encontrado", StatusCode = 404 };
+
                 IEnumerable<AirportDto> airportsDto = _mapper.Map<IEnumerable<AirportDto>>(airports);
                 return new Result<IEnumerable<AirportDto>> { Success = true, Data = airportsDto, StatusCode = 200 };
 
             }
             catch (Exception ex)
             {
-                return new Result<IEnumerable<AirportDto>> { Success = false, ErrorMessage = $"{ex.Message}", StatusCode = 404 };
+                return new Result<IEnumerable<AirportDto>> { Success = false, ErrorMessage = $"{ex.Message}", StatusCode = 400 };
             }
 
         }

@@ -1,6 +1,7 @@
 ﻿using Horizon.Aplication.Dtos;
 using Horizon.Aplication.ServiceInterfaces;
 using Microsoft.AspNetCore.Mvc;
+using static Horizon.Domain.Validation.ErroResultOperation;
 
 namespace Horizon.Api.Controllers
 {
@@ -17,9 +18,12 @@ namespace Horizon.Api.Controllers
         [HttpGet()]
         public async Task<IActionResult> List()
         {
-            IEnumerable<CityDto> resultDto = await _cityService.GetAllCities();
-            if (resultDto is null) return NotFound("Não existem cidades cadastradas");
-            return Ok(resultDto);
+            Result<IEnumerable<CityDto>> result = await _cityService.GetAllCities();
+            if (result.Success)
+                return Ok(result);
+            if (result.StatusCode == 404)
+                return NotFound(result);
+            return BadRequest(result);
         }
     }
 }
