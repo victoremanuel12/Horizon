@@ -15,16 +15,11 @@ namespace Horizon.Aplication.Mappings
             CreateMap<ClassType, ClassTypeDto>().ReverseMap();
             CreateMap<Flight, FlightDto>().ReverseMap();
             CreateMap<Ticket, TicketDto>().ReverseMap();
-
             CreateMap<Class, ClassDto>().ReverseMap();
             CreateMap<Buy, BuyDto>().ReverseMap();
             CreateMap<Visitor, VisitorDto>().ReverseMap();
             CreateMap<Buyer, BuyerDto>().ReverseMap();
-
-
-
-
-
+            CreateMap<Login, LoginDto>().ReverseMap();
         }
     }
 }

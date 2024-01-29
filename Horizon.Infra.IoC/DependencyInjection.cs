@@ -34,6 +34,8 @@ namespace Horizon.Infra.IoC
             services.AddScoped<IBuyerService, BuyerService>();
             services.AddScoped<IVoucherService, VoucherService>();
             services.AddScoped<IBaggageTagService, BaggageTagService>();
+            services.AddScoped<ILoginAdminService, LoginAdminService>();
+
 
 
 

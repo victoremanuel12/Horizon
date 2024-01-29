@@ -13,6 +13,7 @@ namespace Horizon.Domain.Interfaces
         IBuyRepository BuyRepository { get; }
         IVisitorRepository VisitorRepository { get; }
         IBuyerRepository BuyerRepository { get; }
+        ILoginAdminRepository LoginAdminRepository { get; }
         Task Commit();
     }
 }

@@ -15,6 +15,7 @@ namespace Horizon.Infra.Data.Repositories
         private BuyRepository _buyRepository;
         private VisitorRepository _visitorRepository;
         private BuyerRepository _buyerRepository;
+        private LoginAdminRepositry _loginAdminRepositry;
         public ApplicationDbContext _context;
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -91,6 +92,14 @@ namespace Horizon.Infra.Data.Repositories
             get
             {
                 return _buyerRepository = _buyerRepository ?? new BuyerRepository(_context);
+            }
+        }
+        public ILoginAdminRepository LoginAdminRepository
+        {
+
+            get
+            {
+                return _loginAdminRepositry = _loginAdminRepositry ?? new LoginAdminRepositry(_context);
             }
         }
 
