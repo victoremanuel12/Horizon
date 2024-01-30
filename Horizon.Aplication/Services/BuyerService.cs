@@ -4,8 +4,6 @@ using Horizon.Aplication.ServiceInterfaces;
 using Horizon.Domain.Entities;
 using Horizon.Domain.Interfaces;
 using static Horizon.Domain.Validation.ErroResultOperation;
-using static System.Net.Mime.MediaTypeNames;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Horizon.Aplication.Services
 {

@@ -8,6 +8,5 @@ namespace Horizon.Aplication.ServiceInterfaces
         Task<Result<List<TicketDto>>> BuyTickets(List<TicketDto> ticketDtoList);
         Task<Result<IEnumerable<TicketDto>>> GetTicketByCpf(string cpf);
 
-
     }
 }

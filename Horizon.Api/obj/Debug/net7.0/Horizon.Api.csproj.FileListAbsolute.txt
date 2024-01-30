@@ -159,6 +159,12 @@ C:\Users\victor.silva\Documents\Arquivos Importantes\Horizon.Api\obj\Debug\net7.
 C:\Users\victor.silva\Documents\Arquivos Importantes\Horizon.Api\obj\Debug\net7.0\Horizon.Api.pdb
 C:\Users\victor.silva\Documents\Arquivos Importantes\Horizon.Api\obj\Debug\net7.0\Horizon.Api.genruntimeconfig.cache
 C:\Users\victor.silva\Documents\Arquivos Importantes\Horizon.Api\obj\Debug\net7.0\ref\Horizon.Api.dll
+C:\Users\victor.silva\Documents\Horizon\Horizon.Api\obj\Debug\net7.0\Horizon.Api.csproj.AssemblyReference.cache
+C:\Users\victor.silva\Documents\Horizon\Horizon.Api\obj\Debug\net7.0\Horizon.Api.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\victor.silva\Documents\Horizon\Horizon.Api\obj\Debug\net7.0\Horizon.Api.AssemblyInfoInputs.cache
+C:\Users\victor.silva\Documents\Horizon\Horizon.Api\obj\Debug\net7.0\Horizon.Api.AssemblyInfo.cs
+C:\Users\victor.silva\Documents\Horizon\Horizon.Api\obj\Debug\net7.0\Horizon.Api.csproj.CoreCompileInputs.cache
+C:\Users\victor.silva\Documents\Horizon\Horizon.Api\obj\Debug\net7.0\Horizon.Api.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\victor.silva\Documents\Horizon\Horizon.Api\bin\Debug\net7.0\appsettings.Development.json
 C:\Users\victor.silva\Documents\Horizon\Horizon.Api\bin\Debug\net7.0\appsettings.json
 C:\Users\victor.silva\Documents\Horizon\Horizon.Api\bin\Debug\net7.0\Horizon.Api.exe
@@ -219,13 +225,6 @@ C:\Users\victor.silva\Documents\Horizon\Horizon.Api\bin\Debug\net7.0\Horizon.Inf
 C:\Users\victor.silva\Documents\Horizon\Horizon.Api\bin\Debug\net7.0\Horizon.Aplication.pdb
 C:\Users\victor.silva\Documents\Horizon\Horizon.Api\bin\Debug\net7.0\Horizon.Domain.pdb
 C:\Users\victor.silva\Documents\Horizon\Horizon.Api\bin\Debug\net7.0\Horizon.Infra.Data.pdb
-C:\Users\victor.silva\Documents\Horizon\Horizon.Api\obj\Debug\net7.0\Horizon.Api.csproj.AssemblyReference.cache
-C:\Users\victor.silva\Documents\Horizon\Horizon.Api\obj\Debug\net7.0\Horizon.Api.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\victor.silva\Documents\Horizon\Horizon.Api\obj\Debug\net7.0\Horizon.Api.AssemblyInfoInputs.cache
-C:\Users\victor.silva\Documents\Horizon\Horizon.Api\obj\Debug\net7.0\Horizon.Api.AssemblyInfo.cs
-C:\Users\victor.silva\Documents\Horizon\Horizon.Api\obj\Debug\net7.0\Horizon.Api.csproj.CoreCompileInputs.cache
-C:\Users\victor.silva\Documents\Horizon\Horizon.Api\obj\Debug\net7.0\Horizon.Api.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\victor.silva\Documents\Horizon\Horizon.Api\obj\Debug\net7.0\Horizon.Api.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\victor.silva\Documents\Horizon\Horizon.Api\obj\Debug\net7.0\staticwebassets\msbuild.Horizon.Api.Microsoft.AspNetCore.StaticWebAssets.props
 C:\Users\victor.silva\Documents\Horizon\Horizon.Api\obj\Debug\net7.0\staticwebassets\msbuild.build.Horizon.Api.props
 C:\Users\victor.silva\Documents\Horizon\Horizon.Api\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.Horizon.Api.props

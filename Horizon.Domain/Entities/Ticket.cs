@@ -22,15 +22,11 @@ namespace Horizon.Domain.Entities
         public Class Class { get; set; }
         public Buy Buy { get; set; }
 
+        
         public Ticket(Guid classId, string name, string cpf, DateTime birthdate, decimal price, bool dispatch, bool canceled)
         {
             ValidateDomain(classId, name, cpf, birthdate, price, dispatch, canceled);
-        }
-
-        public Ticket(Guid classId, string name, string cpf, DateTime birthdate, decimal price, bool dispatch, Guid buyId, bool canceled, Guid baggageId)
-        {
-            ValidateDomain(classId, name, cpf, birthdate, price, dispatch, canceled);
-
+            BaggageId = Dispatch ? Guid.NewGuid() : Guid.Empty;
         }
 
         private void ValidateDomain(Guid classId, string name, string cpf, DateTime birthdate, decimal price, bool dispatch, bool canceled)
@@ -43,10 +39,9 @@ namespace Horizon.Domain.Entities
             Name = name;
             Cpf = cpf;
             Birthdate = birthdate;
-            Price = dispatch ? price * 1.1m : price;
+            Price = price;
             Dispatch = dispatch;
             Canceled = canceled;
-            BaggageId = dispatch ? Guid.NewGuid() : Guid.Empty;
         }
     }
 }

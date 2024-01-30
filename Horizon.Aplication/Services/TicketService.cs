@@ -33,20 +33,21 @@ namespace Horizon.Aplication.Services
                         throw new Exception("Não existem mais passagens para essa classe");
 
 
-                        Ticket ticketEntity = _mapper.Map<Ticket>(ticketDto);
-                        ticketEntity.Price = classSelected.Price;
-                        classSelected.OccupiedSeat += 1 ;
+                    Ticket ticketEntity = _mapper.Map<Ticket>(ticketDto);
 
-                        _unitOfWork.ClassRepository.Update(classSelected);
+                    ticketEntity.Price = classSelected.Price;
+                    classSelected.OccupiedSeat += 1;
+                    ticketEntity.Price = ticketEntity.Dispatch ? classSelected.Price * 1.1m : classSelected.Price;
 
-                        await _unitOfWork.TicketRepository.CreateAsync(ticketEntity);
-                        await _unitOfWork.Commit();
+                    _unitOfWork.ClassRepository.Update(classSelected);
+                    await _unitOfWork.TicketRepository.CreateAsync(ticketEntity);
+                    await _unitOfWork.Commit();
 
-                        resultTicketList.Add(_mapper.Map<TicketDto>(ticketEntity));
-                    
+                    resultTicketList.Add(_mapper.Map<TicketDto>(ticketEntity));
+
                 }
 
-                 return new Result<List<TicketDto>> { Success = true, Data = resultTicketList, StatusCode = 200 };
+                return new Result<List<TicketDto>> { Success = true, Data = resultTicketList, StatusCode = 200 };
             }
             catch (Exception ex)
             {
@@ -60,8 +61,8 @@ namespace Horizon.Aplication.Services
             try
             {
                 IEnumerable<Ticket> ticketsEntity = await _unitOfWork.TicketRepository.GetListByExpressionAsync(e => e.Cpf == cpf);
-                if (!ticketsEntity.Any()) 
-                    return new Result<IEnumerable<TicketDto>> { Success = false, ErrorMessage ="Nenhuma passagem foi encontrada para esse CPF" ,StatusCode = 404 };
+                if (!ticketsEntity.Any())
+                    return new Result<IEnumerable<TicketDto>> { Success = false, ErrorMessage = "Nenhuma passagem foi encontrada para esse CPF", StatusCode = 404 };
 
                 IEnumerable<TicketDto> ticketsDtoResult = _mapper.Map<IEnumerable<TicketDto>>(ticketsEntity);
 
@@ -73,7 +74,7 @@ namespace Horizon.Aplication.Services
             }
 
         }
-
-
     }
 }
+
+

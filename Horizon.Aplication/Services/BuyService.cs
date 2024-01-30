@@ -3,7 +3,6 @@ using Horizon.Aplication.Dtos;
 using Horizon.Aplication.ServiceInterfaces;
 using Horizon.Domain.Entities;
 using Horizon.Domain.Interfaces;
-using Horizon.Domain.Interfaces.Repositories;
 using static Horizon.Domain.Validation.ErroResultOperation;
 
 namespace Horizon.Aplication.Services
@@ -28,14 +27,9 @@ namespace Horizon.Aplication.Services
             {
 
                 Buy orderBuyEntity = _mapper.Map<Buy>(buyDto);
-                Result<List<TicketDto>> tiketsBought = await _ticketService.BuyTickets(buyDto.Tickets);
-                if (tiketsBought.Data == null)
-                    throw new Exception(tiketsBought.ErrorMessage);
-
                 await _unitOfWork.BuyRepository.CreateAsync(orderBuyEntity);
                 await _unitOfWork.Commit();
                 BuyDto buyDtoResult = _mapper.Map<BuyDto>(orderBuyEntity);
-                buyDtoResult.Tickets = tiketsBought.Data;
                 return new Result<BuyDto> { Success = true, Data = buyDtoResult, StatusCode = 201 };
             }
             catch (Exception ex)
